@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
-import logo from "../../assets/image/logo.png";
+import logo from "../../assets/image/login/logo.png";
 import {CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis} from "recharts";
 
-const UserRealDetail = ({client, userName}) => {
+const UserRealDetail = ({client, userName, showButton}) => {
 
     const [message, setMessage] = useState([
         {
@@ -83,7 +83,7 @@ const UserRealDetail = ({client, userName}) => {
                     x: 1,
                     y: 1,
                 },
-                people: 1,
+                people: "PARENT",
             }),
         });
 
@@ -91,9 +91,13 @@ const UserRealDetail = ({client, userName}) => {
     const handleButtonClick = () => {
         setShowChart(!showChart); // Toggle chart visibility
     };
+    const handleBackButtonClick = () => {
+        showButton(true)
+    }
 
 return(
     <div>
+        <button onClick={handleBackButtonClick}>돌아가기</button>
         <canvas ref={canvasRef} />
         <button onClick={handleButtonClick}>Show Chart</button>
         {showChart && (

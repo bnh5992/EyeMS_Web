@@ -17,15 +17,13 @@ const Socket = () => {
                 console.log("connect")
                 client.current.subscribe(`/sub/enter/chat/room/` + localStorage.getItem("roomId"), (message) => {
                     const msg = JSON.parse(message.body);
+                    console.log(msg[0].message.list)
                     setUser(msg[0].message.list)
                 });
                 handleConnectionChange();
             },
         });
 
-        //client.current.onConnect = () => {
-        //    handleConnectionChange();
-        //};
         client.current.activate();
 
     }, []);
@@ -45,11 +43,17 @@ const Socket = () => {
                         x: 1,
                         y: 1,
                     },
-                    people: 1,
+                    people: "PARENT",
                 }),
             });
         }
     };
+
+    useEffect(() => {
+        if(showButtons){
+            publishMessage()
+        }
+    }, [showButtons])
 
     const handleUserClick = (userName) => {
         setSelectedUser(userName);
@@ -62,7 +66,7 @@ const Socket = () => {
             {showButtons && user.map((userName, index) => (
                 <button key={index} onClick={() => handleUserClick(userName)}>{userName}</button>
             ))}
-            {selectedUser && <UserRealDetail client={client} userName={selectedUser} />}
+            {selectedUser && !showButtons && <UserRealDetail client={client} userName={selectedUser} showButton={setShowButtons}/>}
         </div>
 
 

@@ -1,8 +1,7 @@
-import call from "../../assets/image/call.png"
-import lock from "../../assets/image/lock.png"
-import logo from "../../assets/image/logo.png"
-import person from "../../assets/image/person.png"
-import "../../assets/css/login.css"
+import lock from "../../assets/image/login/lock.png"
+import logo from "../../assets/image/login/logo.png"
+import person from "../../assets/image/login/person.png"
+import "../../assets/css/login/login.css"
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
@@ -48,95 +47,29 @@ const Login = () => {
 
 
     return (
-        <div
-            key="1"
-            lang="en"
-        >
-        <head>
-            <meta charSet="UTF-8" />
-            <meta
-                content="width=device-width, initial-scale=1.0"
-                name="viewport"
-            />
-            <title>
-                Document
-            </title>
-            <link
-                href="../../assets/css/login.css"
-                rel="stylesheet"
-            />
-            <link
-                crossOrigin="anonymous"
-                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-                integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-                referrerPolicy="no-referrer"
-                rel="stylesheet"
-            />
-            <script
-                crossOrigin="anonymous"
-                integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-                src="https://code.jquery.com/jquery-3.6.1.min.js"
-            />
-        </head>
-        <body>
-        <div className="window">
-            <div className="logo">
-                <img
-                    alt=""
-                    id="logo"
-                    src={logo}
-                />
-                <h2 id="info">
-                    보호자 로그인
-                </h2>
-            </div>
-            <div className="login">
-                <div id="id-icon">
-                    <img
-                        height="24px"
-                        src={person}
-                        width="24px"
-                    />
-                    <input
-                        placeholder="아이디"
-                        type="text"
-                        value={agencyId}
-                        onChange={(e) => setAgencyId(e.target.value)}
-                    />
+        <div className="bodyy">
+            <div className="window">
+                <div className="logo">
+                    <img src={logo} alt="" id="logo" />
+                    <h2 id="info">보호자 로그인</h2>
                 </div>
-                <div id="pass-icon">
-                    <img
-                        height="24px"
-                        src={lock}
-                        width="24px"
-                    />
-                    <input
-                        placeholder="비밀번호"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <i className="fa-regular fa-eye-slash" />
+                <div className="login">
+                    <div id="idicon">
+                        <img src={person} width="24px" height="24px" />
+                        <input type="text" placeholder="아이디" />
+                    </div>
+                    <div id="passicon">
+                        <img src={lock} width="24px" height="24px" />
+                        <input type="password" placeholder="비밀번호" />
+                    </div>
+                </div>
+                <div className="btn">
+                    <button id="login" onClick={handleLogin}>로그인</button>
+                    <button id="signup" onClick={handleNavigate}>회원가입</button>
                 </div>
             </div>
-            <div className="btn">
-                <button id="login" onClick={handleLogin} >
-                    로그인
-                </button>
-
-                <button id="signup" onClick={handleNavigate}>
-                    회원가입
-                </button>
-
-            </div>
         </div>
-        <script
-            dangerouslySetInnerHTML={{
-                __html: '    $(document).ready(function(){    $(\'#pass-icon i\').on(\'click\',function(){        $(\'input\').toggleClass(\'active\');        if($(\'input\').hasClass(\'active\')){            $(this).attr(\'class\',"fa-regular fa-eye-slash")            .prev(\'input\').attr(\'type\',"password");        }else{            $(this).attr(\'class\',"fa-regular fa-eye")            .prev(\'input\').attr(\'type\',\'text"\');        }    });});'
-            }}
-        />
-        </body>
-        </div>
+
     )
 }
 
