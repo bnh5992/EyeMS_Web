@@ -1,5 +1,5 @@
 
-.bodyy{
+.login-body{
     background-image: url('/src/assets/image/signUp/loginPage.png');
     background-repeat: no-repeat;
     background-size: cover; /* 배경 이미지가 요소를 완전히 채우도록 설정 */
@@ -8,7 +8,7 @@
     display: flex;
 }
 
-.window{
+.login-window{
     width: 50vh;
     height: 50vh;
     background-color: #ffffff;
@@ -18,12 +18,12 @@
     margin: auto ;
 }
 
-#logo{
+#login-logo{
     width: 33vh;
     height: 11vh;
 }
 
-#info{
+#login-info{
     font-family: 'Pretendard';
     font-weight: 400;
     font-size: 16px;
@@ -35,7 +35,7 @@
     margin-top: 5vh;
 }
 
-#idicon{
+#login-idicon{
     display: flex;
     align-items: center;
     width: 40vh;
@@ -46,7 +46,7 @@
     margin: 2vh auto;
 }
 
-#idicon input{
+#login-idicon input{
     border: none;
     width: 100%;
     text-align: left;
@@ -59,7 +59,7 @@
     font-weight: 400;
 }
 
-#passicon{
+#login-passicon{
     display: flex;
     align-items: center;
     width: 40vh;
@@ -70,7 +70,7 @@
     margin: 16px auto;
 }
 
-#passicon input{
+#login-passicon input{
     border: none;
     width: 100%;
     text-align: left;
@@ -83,11 +83,11 @@
     font-weight: 400;
 }
 
-.btn{
+.login-btn{
     margin-top: 5vh;
 }
 
-.btn button{
+.login-btn button{
     width: 44vh;
     height: 5vh;
     border-radius: 12px;
@@ -110,7 +110,7 @@
     cursor: pointer;
 }
 
-#signup{
+#login-signup{
     background-color: #ffffff;
     color: #4B65F6;
     border: 1px solid #4B65F6;
@@ -119,13 +119,13 @@
     font-weight: 600;
 }
 
-#signup:hover{
+#login-signup:hover{
     border:  1px solid #98A7FA;
     color: #98A7FA;
     cursor: pointer;
 }
 
-#signup a{
+#login-signup a{
     background-color: #ffffff;
     color: #4B65F6;
     font-size: 16px;

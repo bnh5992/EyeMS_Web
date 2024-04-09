@@ -2,7 +2,7 @@ import call from "../../assets/image/signUp/call.png"
 import lock from "../../assets/image/signUp/lock.png"
 import logo from "../../assets/image/signUp/logo.png"
 import person from "../../assets/image/signUp/person.png"
-import "../../assets/css/signup/register.css"
+import "../../assets/css/signup.css"
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -75,20 +75,20 @@ const SignUp = () => {
     };
 
     return (
-        <div className="bodyy">
-            <div className="window">
-                <div className="logo">
+        <div className="signup-body">
+            <div className="signup-window">
+                <div className="signup-logo">
                     <img
                         alt=""
-                        id="logo"
+                        id="signup-logo"
                         src={logo}
                     />
-                    <h2 id="info">
+                    <h2 id="signup-info">
                         보호자 회원가입
                     </h2>
                 </div>
-                <div className="login">
-                    <div id="id-icon">
+                <div className="signup-login">
+                    <div id="signup-id-icon">
                         <img
                             height="24px"
                             src={person}
@@ -101,7 +101,7 @@ const SignUp = () => {
                             onChange={handleAgencyIdChange}
                         />
                     </div>
-                    <div id="pass-icon">
+                    <div id="signup-pass-icon">
                         <img
                             height="24px"
                             src={lock}
@@ -115,7 +115,7 @@ const SignUp = () => {
                         />
                         <i className="fa-regular fa-eye-slash" />
                     </div>
-                    <div id="pass-icon-check">
+                    <div id="signup-pass-icon-check">
                         <img
                             height="24px"
                             src={lock}
@@ -129,7 +129,7 @@ const SignUp = () => {
                         />
                         <i className="fa-regular fa-eye-slash" />
                     </div>
-                    <div id="name1-icon">
+                    <div id="signup-name1-icon">
                         <img
                             height="24px"
                             src={person}
@@ -140,21 +140,9 @@ const SignUp = () => {
                             type="text"
                             value={name}
                             onChange={handleNameChange}
-
                         />
                     </div>
-                    <div id="name2-icon">
-                        <img
-                            height="24px"
-                            src={person}
-                            width="24px"
-                        />
-                        <input
-                            placeholder="자녀 이름"
-                            type="text"
-                        />
-                    </div>
-                    <div id="tel-icon">
+                    <div id="signup-tel-icon">
                         <img
                             height="24px"
                             src={call}
@@ -167,9 +155,22 @@ const SignUp = () => {
                             onChange={handlePhoneChange}
                         />
                     </div>
+                    <div id="signup-name1-icon">
+                        <img
+                            height="24px"
+                            src={person}
+                            width="24px"
+                        />
+                        <input
+                            placeholder="보호자 관계"
+                            type="text"
+                            value={name}
+                            onChange={handleNameChange}
+                        />
+                    </div>
                 </div>
-                <div className="btn">
-                    <button id="sign-up" onClick={handleSignUp}>
+                <div className="signup-btn">
+                    <button id="signup-sign-up" onClick={handleSignUp}>
                         회원가입
                     </button>
                 </div>

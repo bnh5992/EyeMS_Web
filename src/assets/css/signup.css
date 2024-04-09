@@ -1,5 +1,5 @@
 
-.bodyy{
+.signup-body{
     background-image: url('/src/assets/image/signUp/loginPage.png');
     background-repeat: no-repeat;
     background-size: cover; /* 배경 이미지가 요소를 완전히 채우도록 설정 */
@@ -8,7 +8,7 @@
     display: flex;
 }
 
-.window{
+.signup-window{
     width: 50vh;
     height: 70vh;
     background-color: #ffffff;
@@ -18,31 +18,31 @@
     margin: auto ;
 }
 
-#logo{
+#signup-logo{
     width: 33vh;
     height: 11vh;
 }
 
-#info{
+#signup-info{
     font-family: 'Pretendard';
     font-weight: 400;
     font-size: 16px;
     color: #98A7FA;
 }
 
-.login{
+.signup-login{
     display: block;
     margin-top: 4vh;
 }
 
-.btn{
+.signup-btn{
     margin-top: 3vh;
 }
 
-#id-icon,
-#name1-icon,
-#name2-icon,
-#tel-icon{
+#signup-id-icon,
+#signup-name1-icon,
+#signup-name2-icon,
+#signup-tel-icon{
     display: flex;
     align-items: center;
     width: 40vh;
@@ -53,10 +53,10 @@
     margin: 2vh auto;
 }
 
-#id-icon input,
-#name1-icon input,
-#name2-icon input,
-#tel-icon input{
+#signup-id-icon input,
+#signup-name1-icon input,
+#signup-name2-icon input,
+#signup-tel-icon input{
     border: none;
     width: 100%;
     text-align: left;
@@ -69,8 +69,8 @@
     font-weight: 400;
 }
 
-#pass-icon,
-#pass-icon-check{
+#signup-pass-icon,
+#signup-pass-icon-check{
     display: flex;
     align-items: center;
     width: 40vh;
@@ -81,8 +81,8 @@
     margin: 2vh auto;
 }
 
-#pass-icon input,
-#pass-icon-check input{
+#signup-pass-icon input,
+#signup-pass-icon-check input{
     border: none;
     width: 100%;
     text-align: left;
@@ -95,14 +95,14 @@
     font-weight: 400;
 }
 
-.window p{
+.signup-window p{
     font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 400;
     color: #999;
 }
 
-.window a{
+.signup-window a{
     font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 500;
@@ -110,7 +110,7 @@
     color: #4B65F6;
 }
 
-.btn button{
+.signup-btn button{
     width: 44vh;
     height: 5vh;
     border-radius: 12px;
@@ -118,11 +118,16 @@
     margin: 0.5vh auto;
 }
 
-#sign-up{
+#signup-sign-up{
     background-color: #4B65F6;
     color: #ffffff;
     border: none;
     font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 600;
+}
+
+#signup-sign-up:hover{
+    color: #98A7FA;
+    cursor: pointer;
 }

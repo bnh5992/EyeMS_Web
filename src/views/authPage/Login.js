@@ -1,7 +1,7 @@
 import lock from "../../assets/image/login/lock.png"
 import logo from "../../assets/image/login/logo.png"
 import person from "../../assets/image/login/person.png"
-import "../../assets/css/login/login.css"
+import "../../assets/css/login.css"
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
@@ -47,25 +47,25 @@ const Login = () => {
 
 
     return (
-        <div className="bodyy">
-            <div className="window">
-                <div className="logo">
-                    <img src={logo} alt="" id="logo" />
-                    <h2 id="info">보호자 로그인</h2>
+        <div className="login-body">
+            <div className="login-window">
+                <div className="login-logo">
+                    <img src={logo} alt="" id="login-logo" />
+                    <h2 id="login-info">보호자 로그인</h2>
                 </div>
                 <div className="login">
-                    <div id="idicon">
+                    <div id="login-idicon">
                         <img src={person} width="24px" height="24px" />
                         <input type="text" placeholder="아이디" />
                     </div>
-                    <div id="passicon">
+                    <div id="login-passicon">
                         <img src={lock} width="24px" height="24px" />
                         <input type="password" placeholder="비밀번호" />
                     </div>
                 </div>
-                <div className="btn">
+                <div className="login-btn">
                     <button id="login" onClick={handleLogin}>로그인</button>
-                    <button id="signup" onClick={handleNavigate}>회원가입</button>
+                    <button id="login-signup" onClick={handleNavigate}>회원가입</button>
                 </div>
             </div>
         </div>
