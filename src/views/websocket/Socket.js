@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Client } from "@stomp/stompjs";
 import UserRealDetail from "./UserRealDetail";
+import SideBar from "../mainPage/SideBar";
 
 const Socket = () => {
 
@@ -63,11 +64,14 @@ const Socket = () => {
 
     return (
         <div>
-            {showButtons && user.map((userName, index) => (
-                <button key={index} onClick={() => handleUserClick(userName)}>{userName}</button>
-            ))}
-            {selectedUser && !showButtons && <UserRealDetail client={client} userName={selectedUser} showButton={setShowButtons}/>}
+            <div>
+                {showButtons && user.map((userName, index) => (
+                    <button key={index} onClick={() => handleUserClick(userName)}>{userName}</button>
+                ))}
+                {selectedUser && !showButtons && <UserRealDetail client={client} userName={selectedUser} showButton={setShowButtons}/>}
+            </div>
         </div>
+
 
 
     );

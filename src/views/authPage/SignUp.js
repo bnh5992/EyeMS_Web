@@ -2,6 +2,9 @@ import call from "../../assets/image/signUp/call.png"
 import lock from "../../assets/image/signUp/lock.png"
 import logo from "../../assets/image/signUp/logo.png"
 import person from "../../assets/image/signUp/person.png"
+import calendar from "../../assets/image/managePage/calendar_today.png"
+import mail from "../../assets/image/managePage/mail.png"
+import home from "../../assets/image/managePage/home.png"
 import "../../assets/css/signup.css"
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,8 +17,25 @@ const SignUp = () => {
     const [agencyName, setAgencyName] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
+    const [birth, setBirth] = useState('');
+    const [gender, setGender] = useState('');
+    const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const handleGenderChange = (event) => {
+        setGender(event.target.value);
+    }
+    const handleBirthChange = (event) =>{
+        setBirth(event.target.value);
+    }
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+    }
     const handleAgencyIdChange = (event) =>{
         setAgencyId(event.target.value);
     };
@@ -54,7 +74,7 @@ const SignUp = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ agencyId, password , agencyName, name, phone}),
+                body: JSON.stringify({ agencyId, password , name, birth, gender, phone, email, address, agencyName }),
                 mode: 'cors'
             });
 
@@ -66,7 +86,7 @@ const SignUp = () => {
                     console.error('JSON 파싱 오류:', error);
                 });
             } else {
-                console.error('로그인 실패');
+                console.error('회원가입 실패');
             }
 
         } catch (error) {
@@ -88,7 +108,7 @@ const SignUp = () => {
                     </h2>
                 </div>
                 <div className="signup-login">
-                    <div id="signup-id-icon">
+                    <div id="signup-icon">
                         <img
                             height="24px"
                             src={person}
@@ -115,7 +135,7 @@ const SignUp = () => {
                         />
                         <i className="fa-regular fa-eye-slash" />
                     </div>
-                    <div id="signup-pass-icon-check">
+                    <div id="signup-pass-icon">
                         <img
                             height="24px"
                             src={lock}
@@ -128,44 +148,100 @@ const SignUp = () => {
                             onChange={handleConfirmPasswordChange}
                         />
                         <i className="fa-regular fa-eye-slash" />
+
+                        {!passwordsMatch && <h6 id="error-message">
+                            패스워드가 일치하지 않습니다
+                        </h6>}
                     </div>
-                    <div id="signup-name1-icon">
+                    <div id="signup-icon">
                         <img
                             height="24px"
                             src={person}
                             width="24px"
                         />
                         <input
-                            placeholder="보호자 이름"
+                            placeholder="이름"
                             type="text"
                             value={name}
                             onChange={handleNameChange}
                         />
                     </div>
-                    <div id="signup-tel-icon">
+                    <div id="signup-icon">
+                        <img
+                            height="24px"
+                            src={calendar}
+                            width="24px"
+                        />
+                        <input
+                            placeholder="생년월일"
+                            type="text"
+                            value={birth}
+                            onChange={handleBirthChange}
+                        />
+                    </div>
+                    <div id="signup-icon">
+                        <img
+                            height="24px"
+                            src={person}
+                            width="24px"
+                        />
+                        <input
+                            placeholder="성별"
+                            type="text"
+                            value={gender}
+                            onChange={handleGenderChange}
+                        />
+                    </div>
+                    <div id="signup-icon">
                         <img
                             height="24px"
                             src={call}
                             width="24px"
                         />
                         <input
-                            placeholder="휴대전화"
+                            placeholder="전화번호"
                             type="text"
                             value={phone}
                             onChange={handlePhoneChange}
                         />
                     </div>
-                    <div id="signup-name1-icon">
+                    <div id="signup-icon">
+                        <img
+                            height="24px"
+                            src={mail}
+                            width="24px"
+                        />
+                        <input
+                            placeholder="이메일"
+                            type="text"
+                            value={email}
+                            onChange={handleEmailChange}
+                        />
+                    </div>
+                    <div id="signup-icon">
+                        <img
+                            height="24px"
+                            src={home}
+                            width="24px"
+                        />
+                        <input
+                            placeholder="주소"
+                            type="text"
+                            value={address}
+                            onChange={handleAddressChange}
+                        />
+                    </div>
+                    <div id="signup-icon">
                         <img
                             height="24px"
                             src={person}
                             width="24px"
                         />
                         <input
-                            placeholder="보호자 관계"
+                            placeholder="기관명"
                             type="text"
-                            value={name}
-                            onChange={handleNameChange}
+                            value={agencyName}
+                            onChange={handleAgencyNameChange}
                         />
                     </div>
                 </div>

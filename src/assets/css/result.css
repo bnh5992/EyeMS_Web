@@ -1,0 +1,211 @@
+
+/* 메인컨텐츠 */
+.total-main{
+    width: 155vh;
+    margin-left: 40vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.total-top{
+    display: flex;
+}
+
+/* 횟수 */
+.total-count{
+    display: block;
+    width: auto;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 16px 0px rgba(126, 150, 255, 0.20);
+    margin-right: 20px;
+    padding: 30px;
+}
+.total-count-detail {
+    width: 35vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+.total-count-detail h3{
+    font-size: 20px;
+    font-weight: 600;
+    color: #4B65F4;
+    margin: 0;
+}
+.total-count-detail p{
+    color: #444;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+.total-count hr{
+    width: 35vh;
+    height: 1px;
+    border: none;
+    background-color: #e7e7e7;
+    margin: 10px auto;
+}
+
+
+
+/* 백분위 */
+.total-hundred{
+    display: block;
+    width: 200vh;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 16px 0px rgba(126, 150, 255, 0.20);
+    margin-right: 20px;
+    padding: 30px;
+}
+
+.total-title{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 30px 0;
+}
+
+/* 진단결과 요약 */
+.total-sumup{
+    display: block;
+    width: 200vh;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 16px 0px rgba(126, 150, 255, 0.20);
+    margin-right: 20px;
+    padding: 30px;
+}
+
+.info2{
+    display: flex;
+    flex-direction: column;
+    margin: -20px 0;
+}
+.info2 p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #444444;
+}
+.info2 b{
+    color: #4B65F4;
+    font-weight: 800;
+}
+
+
+
+/* 컨텐츠별 진척도 */
+.total-bottom{
+    display: flex;
+    margin: 20px 0;
+}
+
+.total-contents{
+    display: block;
+    width: 200vh;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 16px 0px rgba(126, 150, 255, 0.20);
+    margin-right: 20px;
+    padding: 30px;
+}
+
+.total-table{
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+.total-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-options{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#total-drop{
+    background-color:#EFF2FF ;
+    border: none;
+    padding: 6px 10px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #4B65F4;
+}
+.total-table thead{
+    border-radius: 8px;
+    background-color: #EFF2FF;
+
+}
+.total-table th{
+    text-align: left;
+    font-size: 20px;
+    color: #888888;
+    font-weight: 600;
+    padding: 10px 20px;
+}
+.total-table td{
+    text-align: left;
+    font-size: 16px;
+    color: #666666;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.total-detail{
+    display: flex;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+.total-detail a{
+    margin-left: auto;
+}
+
+
+
+/* 날짜별 진척도 */
+.days{
+    display: block;
+    width: 200vh;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 16px 0px rgba(126, 150, 255, 0.20);
+    margin-right: 20px;
+    padding: 30px;
+}
+
+
+
+
+
+
+
+
+
+.total-hundred-chart{
+    margin: -20px auto;
+}
+
+.total-sumup-chart{
+    margin: 0px auto;
+}
+
+
+
+

@@ -32,7 +32,7 @@ const Login = () => {
                     localStorage.setItem('agencyId', agencyId);
                     localStorage.setItem('password', password);
                     localStorage.setItem('roomId', data.room);
-                    navigate('/socket');
+                    navigate('/result');
                 }).catch(error => {
                     console.error('JSON 파싱 오류:', error);
                 });
@@ -56,15 +56,21 @@ const Login = () => {
                 <div className="login">
                     <div id="login-idicon">
                         <img src={person} width="24px" height="24px" />
-                        <input type="text" placeholder="아이디" />
+                        <input type="text"
+                               value={agencyId}
+                               onChange={(e) => setAgencyId(e.target.value)}
+                               placeholder="아이디" />
                     </div>
                     <div id="login-passicon">
                         <img src={lock} width="24px" height="24px" />
-                        <input type="password" placeholder="비밀번호" />
+                        <input type="password"
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}
+                               placeholder="비밀번호" />
                     </div>
                 </div>
                 <div className="login-btn">
-                    <button id="login" onClick={handleLogin}>로그인</button>
+                    <button id="login"  onClick={handleLogin}>로그인</button>
                     <button id="login-signup" onClick={handleNavigate}>회원가입</button>
                 </div>
             </div>
