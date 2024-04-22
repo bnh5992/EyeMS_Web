@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const [agencyId, setAgencyId] = useState('');
     const [password, setPassword] = useState('');
+    const [successLogin, setSuccessLogin] = useState(true)
     const navigate = useNavigate();
 
     const handleNavigate = () => {
@@ -27,6 +28,10 @@ const Login = () => {
                 response.json().then(data => {
                     const token = data.token;
                     console.log(token);
+                    if(!data.success){
+                        setSuccessLogin(false)
+                        return
+                    }
 
                     localStorage.setItem('token', token);
                     localStorage.setItem('agencyId', agencyId);

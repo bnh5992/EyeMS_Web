@@ -207,5 +207,70 @@
 }
 
 
+/*여서부터*/
+.total-top-bar{
+    display: flex;
+}
+
+.total-toggle-btn{
+    background-image: url("../image/resultPage/toggle.png");
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 10px;
+    z-index: 2;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+}
+.total-toggle-btn:hover{
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 170px;
+    height: 500px;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+    border-radius: 30px 0 0 30px;
+    overflow-y: auto;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.total-user-list{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px 0 0;
+}
+
+.total-user-list a{
+    margin: 0 0 0 15px;
+    font-size: 18px;
+    color: #4B65F6;
+}
+
+.total-user-on{
+    width: 15px;
+    height: 15px;
+    background-color: limegreen;
+    border-radius: 8px;
+    margin: auto 0;
+}
+
+.total-user-off{
+    width: 15px;
+    height: 15px;
+    background-color: #999999;
+    border-radius: 8px;
+    margin: auto 0;
+}
+
 
 

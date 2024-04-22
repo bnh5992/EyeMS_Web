@@ -17,10 +17,11 @@ import {
 
 } from 'recharts';
 
-
 import "../../assets/css/result.css"
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import SideBar from "../mainPage/SideBar";
+import {Client} from "@stomp/stompjs";
+import UserCheck from "./UserCheck";
 
 const ResultPage = () => {
 
@@ -33,13 +34,109 @@ const ResultPage = () => {
         { subject: 'fff', A: 95, B: 70 },
     ];
 
+    const client = useRef(null);
+    const user = useRef([{name : null, online : false}])
+    const [updateUser, setUpdateUser] = useState([{}])
+
+    const userList = async () => {
+        const token = localStorage.getItem('token')
+        try {
+            const response = await fetch('http://localhost:8080/user/userlist', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                mode: 'cors'
+            });
+            return await response.json();
+
+        } catch (error) {
+            console.error('오류 발생:', error);
+        }
+    };
+
+    const getData = () =>{
+        return new Promise((resolve, reject) =>{
+            const data = userList();
+            resolve(data);
+        })
+    }
+
+    const getSocket = () =>{
+        return new Promise((resolve, reject) =>{
+            const data = openSocket();
+            resolve(data);
+        })
+    }
+
+    const runTask = async () => {
+        const data = await getData()
+        const modifiedUsers = data["userList"].map(user => ({ name: user,  online : false}));
+        user.current = modifiedUsers
+        console.log(user.current)
+        const socket = await getSocket()
+    }
+
+
+    useEffect(() => {
+        runTask()
+    }, []);
+
+    const openSocket = async () => {
+        client.current = new Client({
+            brokerURL: "ws://localhost:8080/ws", // 서버 WebSocket URL
+            reconnectDelay: 5000,
+            onConnect: () => {
+                console.log("connect")
+                client.current.subscribe(`/sub/enter/chat/room/` + localStorage.getItem("roomId"), (message) => {
+                    const msg = JSON.parse(message.body);
+                    const updateUser = user.current.map(userName => ({
+                        name : userName.name,
+                        online : msg[0].message.list.includes(userName.name)
+                    }));
+                    setUpdateUser(updateUser)
+                    user.current = updateUser
+                });
+
+                handleConnectionChange();
+            },
+        });
+
+        client.current.activate();
+    }
+    const handleConnectionChange = async () => {
+        publishMessage();
+    };
+    const publishMessage = () => {
+        if (client.current.connected) {
+            console.log("publish");
+            client.current.publish({
+                destination: "/pub/chat/message",
+                body: JSON.stringify({
+                    type: "ENTER",
+                    roomId: localStorage.getItem("roomId"),
+                    sender: localStorage.getItem("agencyId"),
+                    message: {
+                        x: 1,
+                        y: 1,
+                    },
+                    people: "PARENT",
+                }),
+            });
+        }
+    };
+
 
     return (
         <div>
             <SideBar/>
             {/* main */}
             <div className="total-main">
-                <div className="mypage-mypage">종합 결과</div>
+                <div className="total-top-bar">
+                    <div className="mypage-mypage">종합 결과</div>
+                    <UserCheck user={user} updateUser={updateUser}/>
+                </div>
                 <div className="total-top">
                     <div className="total-count">
                         <div className="total-title">진행 횟수</div>

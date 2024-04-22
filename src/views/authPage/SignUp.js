@@ -2,9 +2,9 @@ import call from "../../assets/image/signUp/call.png"
 import lock from "../../assets/image/signUp/lock.png"
 import logo from "../../assets/image/signUp/logo.png"
 import person from "../../assets/image/signUp/person.png"
-import calendar from "../../assets/image/managePage/calendar_today.png"
-import mail from "../../assets/image/managePage/mail.png"
-import home from "../../assets/image/managePage/home.png"
+import calendar from "../../assets/image/signUp/calendar_today.png"
+import mail from "../../assets/image/signUp/mail.png"
+import home from "../../assets/image/signUp/home.png"
 import "../../assets/css/signup.css"
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';

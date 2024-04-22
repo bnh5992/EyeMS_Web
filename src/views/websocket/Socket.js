@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Client } from "@stomp/stompjs";
 import UserRealDetail from "./UserRealDetail";
 import SideBar from "../mainPage/SideBar";
+import UserList from "./UserList";
 
 const Socket = () => {
 
@@ -18,7 +19,6 @@ const Socket = () => {
                 console.log("connect")
                 client.current.subscribe(`/sub/enter/chat/room/` + localStorage.getItem("roomId"), (message) => {
                     const msg = JSON.parse(message.body);
-                    console.log(msg[0].message.list)
                     setUser(msg[0].message.list)
                 });
                 handleConnectionChange();
@@ -70,6 +70,7 @@ const Socket = () => {
                 ))}
                 {selectedUser && !showButtons && <UserRealDetail client={client} userName={selectedUser} showButton={setShowButtons}/>}
             </div>
+            <UserList selectUser={user}/>
         </div>
 
 

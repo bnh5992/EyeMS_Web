@@ -12,6 +12,7 @@ const UserRealDetail = ({client, userName, showButton}) => {
     const [firstImage , setFirstImage] = useState([{}])
     const [secondImage , setSecondImage] = useState([{}])
     const [thirdImage , setThirdImage] = useState([{}])
+    const [nowData, setNowData] = useState([{}])
 
     const canvasRef = useRef(null);
     const [count, setCount] = useState(0);
@@ -130,6 +131,19 @@ const UserRealDetail = ({client, userName, showButton}) => {
     }
     const handleNextButtonClick = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        switch (currentImageIndex){
+            case 0:
+                setNowData(firstImage);
+                break;
+            case 1:
+                setNowData(secondImage);
+                break;
+            case 2:
+                setNowData(thirdImage);
+                break;
+            default:
+                break;
+        }
     }
 
 return(
@@ -141,7 +155,7 @@ return(
         <button onClick={handleBackButtonClick}>돌아가기</button>
         <button onClick={handleButtonClick}>Show Chart</button>
         {showChart && (
-            <LineChart width={800} height={400} data={images[currentImageIndex]}>
+            <LineChart width={800} height={400} data={nowData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="timestamp" />
                 <YAxis />
