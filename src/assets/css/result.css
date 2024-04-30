@@ -1,8 +1,8 @@
 
 /* 메인컨텐츠 */
 .total-main{
-    width: 155vh;
-    margin-left: 40vh;
+    width: 1230px;
+    margin-left: 300px;
     display: flex;
     flex-direction: column;
 }
@@ -10,6 +10,82 @@
 .total-top{
     display: flex;
 }
+
+
+/*여서부터*/
+.total-top-bar{
+    display: flex;
+}
+
+.total-toggle-btn{
+    background-image: url("../image/resultPage/toggle.png");
+    background-size: cover;
+    background-color: white;
+    width: 50px;
+    height: 40px;
+    position: fixed;
+    right: 10px;
+    z-index: 2;
+    border: none;
+    margin: 10px;
+}
+.total-toggle-btn:hover{
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 180px;
+    height: 500px;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+    border-radius: 30px 0 0 30px;
+    overflow-y: auto;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.total-user-list{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px 0 0;
+}
+
+.total-user-list button{
+    background-color: #fff;
+    border: none;
+    margin: 0 0 0 5px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #4B65F6;
+}
+.total-user-list button:hover{
+    cursor: pointer;
+}
+.total-user-on{
+    width: 15px;
+    height: 15px;
+    background-color: limegreen;
+    border-radius: 8px;
+    margin: auto 0;
+}
+
+.total-user-off{
+    width: 15px;
+    height: 15px;
+    background-color: #999999;
+    border-radius: 8px;
+    margin: auto 0;
+}
+
+
+
+
+
 
 /* 횟수 */
 .total-count{
@@ -24,7 +100,7 @@
     padding: 30px;
 }
 .total-count-detail {
-    width: 35vh;
+    width: 230px;
     display: flex;
     justify-content: space-between;
     padding: 0;
@@ -42,7 +118,7 @@
     margin: 0;
 }
 .total-count hr{
-    width: 35vh;
+    width: 230px;
     height: 1px;
     border: none;
     background-color: #e7e7e7;
@@ -54,7 +130,7 @@
 /* 백분위 */
 .total-hundred{
     display: block;
-    width: 200vh;
+    width: 800px;
     height: auto;
     border-radius: 24px;
     border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
@@ -73,7 +149,7 @@
 /* 진단결과 요약 */
 .total-sumup{
     display: block;
-    width: 200vh;
+    width: 800px;
     height: auto;
     border-radius: 24px;
     border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
@@ -108,7 +184,7 @@
 
 .total-contents{
     display: block;
-    width: 200vh;
+    width: 1200px;
     height: auto;
     border-radius: 24px;
     border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
@@ -147,7 +223,6 @@
 .total-table thead{
     border-radius: 8px;
     background-color: #EFF2FF;
-
 }
 .total-table th{
     text-align: left;
@@ -180,7 +255,7 @@
 /* 날짜별 진척도 */
 .days{
     display: block;
-    width: 200vh;
+    width: 800px;
     height: auto;
     border-radius: 24px;
     border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
@@ -207,70 +282,22 @@
 }
 
 
-/*여서부터*/
-.total-top-bar{
-    display: flex;
+
+
+
+
+
+
+.summary-date{
+    width: 30%;
+}
+.summary-name{
+    width: 45%;
+}
+.summary-score{
+    width: 25%;
 }
 
-.total-toggle-btn{
-    background-image: url("../image/resultPage/toggle.png");
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    right: 10px;
-    z-index: 2;
-    border: none;
-    border-radius: 20px;
-    margin: 10px;
-}
-.total-toggle-btn:hover{
-    cursor: pointer;
-}
-
-#overlay {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    width: 170px;
-    height: 500px;
-    background-color: #ffffff;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    z-index: 1;
-    border-radius: 30px 0 0 30px;
-    overflow-y: auto;
-    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
-}
-
-.total-user-list{
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 10px 0 0;
-}
-
-.total-user-list a{
-    margin: 0 0 0 15px;
-    font-size: 18px;
-    color: #4B65F6;
-}
-
-.total-user-on{
-    width: 15px;
-    height: 15px;
-    background-color: limegreen;
-    border-radius: 8px;
-    margin: auto 0;
-}
-
-.total-user-off{
-    width: 15px;
-    height: 15px;
-    background-color: #999999;
-    border-radius: 8px;
-    margin: auto 0;
-}
 
 
 

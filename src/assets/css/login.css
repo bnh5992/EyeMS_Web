@@ -1,26 +1,26 @@
 
 .login-body{
-    background-image: url('/src/assets/image/signUp/loginPage.png');
+    background-image: url('../image/signUp/loginPage.png');
     background-repeat: no-repeat;
-    background-size: cover; /* 배경 이미지가 요소를 완전히 채우도록 설정 */
-    background-position: center; /* 배경 이미지의 위치를 가운데로 조정 */
-    height: 100vh; /* 화면의 높이에 따라 요소의 높이를 조정 */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
     display: flex;
 }
 
 .login-window{
-    width: 50vh;
-    height: 50vh;
+    width: 360px;
+    height: 370px;
     background-color: #ffffff;
     border-radius: 16px;
     text-align: center;
-    padding: 7vh 0;
+    padding: 80px 20px;
     margin: auto ;
 }
 
 #login-logo{
-    width: 33vh;
-    height: 11vh;
+    width: 230px;
+    height: 80px;
 }
 
 #login-info{
@@ -32,25 +32,25 @@
 
 .login{
     display: block;
-    margin-top: 5vh;
+    margin-top: 40px;
 }
 
 #login-idicon{
     display: flex;
     align-items: center;
-    width: 40vh;
-    height: 3vh;
+    width: 300px;
+    height: 26px;
     border-radius: 12px;
     border: 1.5px solid #CBD5FF;
     padding: 10px 15px;
-    margin: 2vh auto;
+    margin: 10px auto;
 }
 
 #login-idicon input{
     border: none;
     width: 100%;
     text-align: left;
-    margin-left: 1vh;
+    margin-left: 10px;
     outline: none;
     font-size: 16px;
     color: #A1A1A1;
@@ -62,8 +62,8 @@
 #login-passicon{
     display: flex;
     align-items: center;
-    width: 40vh;
-    height: 3vh;
+    width: 300px;
+    height: 26px;
     border-radius: 12px;
     border: 1.5px solid #CBD5FF;
     padding: 10px 15px;
@@ -74,7 +74,7 @@
     border: none;
     width: 100%;
     text-align: left;
-    margin-left: 1vh;
+    margin-left: 10px;
     outline: none;
     font-size: 16px;
     color: #A1A1A1;
@@ -84,23 +84,23 @@
 }
 
 .login-btn{
-    margin-top: 5vh;
+    margin-top: 30px;
 }
 
 .login-btn button{
-    width: 44vh;
-    height: 5vh;
+    width: 330px;
+    height: 40px;
     border-radius: 12px;
     padding: 10px 15px;
-    margin: 0.5vh auto;
+    margin: 5px auto;
 }
 
 #login{
     background-color: #4B65F6;
     color: #ffffff;
-    margin-bottom: 1vh;
+    margin-bottom: 10px;
     border: none;
-    font-size: 2vh;
+    font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 600;
 }
@@ -114,7 +114,7 @@
     background-color: #ffffff;
     color: #4B65F6;
     border: 1px solid #4B65F6;
-    font-size: 2vh;
+    font-size: 16px;
     font-family: 'Pretendard';
     font-weight: 600;
 }

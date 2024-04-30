@@ -1,0 +1,111 @@
+.monitoring-list{
+    padding: 30px;
+    width: 1000px;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
+    background: #FFF;
+    box-shadow: 0px 0px 16px 0px rgba(126, 150, 255, 0.20);
+    margin: 0 0 50px 0;
+    min-height: 250px;
+}
+.monitoring-row{
+    height: 250px;
+    display: flex;
+    justify-content: space-around;
+}
+.monitoring-cell{
+    background-color: #DBE2FD;
+    border-radius: 20px;
+    width: 100%;
+    padding: 30px;
+    margin: 10px;
+    align-content: center;
+    text-align: center;
+}
+
+.monitoring-cell:hover{
+    cursor: pointer;
+}
+
+.monitoring-cell img{
+    display: block;
+    margin: auto;
+}
+
+.monitoring-empty{
+    visibility: hidden;
+}
+
+
+
+
+.real-body{
+    width: 900px;
+    margin-left: 300px;
+    margin-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+}
+.real-body-margin{
+    width: 900px;
+    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+#real-text-img{
+    width: 640px;
+    height: 1080px;
+}
+
+.real-main{
+    padding: 30px;
+    width: 640px;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
+    background: #FFF;
+    box-shadow: 0px 0px 16px 0px rgba(126, 150, 255, 0.20);
+    margin: 0 0 50px 0;
+}
+
+
+.time-show-graph{
+    background-image: url("../image/monitoring/down.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 150px;
+    right: 0;
+    border: 3px solid var(--stroke, rgba(126, 150, 255, 0.16));
+}
+
+.time-no-show{
+    background-image: url("../image/monitoring/up.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    right: 0;;
+    border: 3px solid var(--stroke, rgba(126, 150, 255, 0.16));
+}
+
+.real-graph{
+    width: 1248px;
+    height: 150px;
+    position: fixed;
+    bottom: 0;
+    background-color: #eee;
+    border-right: 1px solid rgba(126, 150, 255, 0.16);
+    margin-left: 270px;
+}
+.real-graph-hidden{
+    visibility: hidden;
+}

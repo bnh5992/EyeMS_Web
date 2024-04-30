@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from "react";
 
-const UserCheck = ({user, updateUser}) =>{
+const UserCheck = ({user, updateUser, setSelectUser}) =>{
     const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
     const toggleOverlay = () => {
         setIsOverlayVisible(!isOverlayVisible);
     };
+
+    const handleUserChange = (event) => {
+        setSelectUser(event.target.value)
+    }
 
     useEffect(() => {
     }, [updateUser]);
@@ -16,7 +20,7 @@ const UserCheck = ({user, updateUser}) =>{
                 <div id="overlay">
                     {user.current.map((users) => (
                         <div className="total-user-list">
-                            <a href={'http://localhost:3000/totalresult'} >{users.name}</a>
+                            <button onClick={handleUserChange} value={users.name}>{users.name}</button>
                             <div className={'total-user-'+(users.online ? 'on' : 'off')}></div>
                         </div>
                     ))}
