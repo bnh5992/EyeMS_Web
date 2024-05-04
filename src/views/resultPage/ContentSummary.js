@@ -9,19 +9,13 @@ const ContentSummary = ({contentData}) => {
     useEffect(() => {
     }, []);
 
-
-
-
-
-
     return(
         <div className="days">
             <div className="total-container">
-                <div className="total-title">메이플스토리</div>
+                <div className="total-title">개선 결과</div>
             </div>
             <table className="total-table">
                 <colgroup>
-                    <col />
                     <col />
                     <col />
                     <col />
@@ -43,6 +37,10 @@ const ContentSummary = ({contentData}) => {
                 ))}
                 </tbody>
             </table>
+
+            <div className="total-detail">
+                <a href="http://localhost:3000">더보기</a>
+            </div>
         </div>
     )
 }

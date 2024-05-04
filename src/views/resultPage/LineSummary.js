@@ -5,12 +5,12 @@ const LineSummary = ({contentChartData}) => {
 
     return (
         <div className="total-sumup">
-            <div className="total-title">재활결과 요약</div>
+            <div className="total-title">개선결과 요약</div>
             {/*<div className="info2">
                             <p>진단 결과, 상위 24%로 <b>우수</b> 상태입니다.</p>
                         </div>*/}
             <LineChart
-                width={400}
+                width={600}
                 height={300}
                 data={contentChartData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}

@@ -1,13 +1,4 @@
 
-
-import {
-    RadarChart,
-    PolarGrid,
-    PolarAngleAxis,
-    PolarRadiusAxis,
-    Radar,
-} from 'recharts';
-
 import "../../assets/css/result.css"
 import React, {useEffect, useRef, useState} from "react";
 import SideBar from "../mainPage/SideBar";
@@ -17,6 +8,7 @@ import ContentSummary from "./ContentSummary";
 import ProgressContent from "./ProgressContent";
 import LineSummary from "./LineSummary";
 import TestSummaryChart from "./TestSummaryChart";
+import TestSummary from "./TestSummary";
 
 const ResultPage = () => {
     const lineData = [
@@ -28,19 +20,56 @@ const ResultPage = () => {
         { name: 'content6', latest: 2390, now: 3800},
     ];
 
+    const polarData = [
+        { subject: '정확도', latest: 120, now: 110 },
+        { subject: '고정횟수', latest: 98, now: 130 },
+        { subject: '풀이시간', latest: 86, now: 100 },
+        { subject: '회귀', latest: 99, now: 85 },
+        { subject: '도약', latest: 85, now: 90 },
+        { subject: '총시간', latest: 95, now: 70 },
+    ];
+
+    const summaryTestData = [
+        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
+        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
+        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
+        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
+        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' }
+    ];
+
 
     const client = useRef(null);
     const user = useRef([{name : null, online : false}])
     const [updateUser, setUpdateUser] = useState([{}])
     const [contentData, setContentData] = useState([{}])
+    const [testData, setTestData] = useState([{}])
     const [contentCountData, setContentCountData] = useState([{}])
     const [contentChartData, setContentChartData] = useState([{}])
+    const [testChartData, setTestChartData] = useState([{}])
     const [selectUser, setSelectUser] = useState("")
 
-    const Summary = async (name) => {
+    const summary = async (name) => {
         if(name !=null){
             try {
                 const response = await fetch('http://localhost:8080/user/summerycontent/'+name, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    mode: 'cors'
+                })
+                return await response.json()
+            } catch (error) {
+                console.error('오류 발생:', error);
+            }
+        }
+
+    };
+
+    const testSummary = async (name) => {
+        if(name !=null){
+            try {
+                const response = await fetch('http://localhost:8080/user/summarytest/'+name, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -90,10 +119,10 @@ const ResultPage = () => {
         }
     };
 
-    const contentSummaryChart = async (name) => {
+    const testChartSummary = async (name) => {
         if(name !=null){
             try {
-                const response = await fetch('http://localhost:8080/user/latest/'+name, {
+                const response = await fetch('http://localhost:8080/user/latesttest/'+name, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -107,9 +136,26 @@ const ResultPage = () => {
         }
     };
 
+    const contentSummaryChart = async (name) => {
+        if(name !=null){
+            try {
+                const response = await fetch('http://localhost:8080/user/latestcontent/'+name, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    mode: 'cors'
+                })
+                return await response.json()
+            } catch (error) {
+                console.error('오류 발생:', error);
+            }
+        }
+    }
+
     const getSummaryData = (name) =>{
         return new Promise((resolve, reject) =>{
-            const data = Summary(name);
+            const data = summary(name);
             resolve(data);
         })
     }
@@ -142,6 +188,20 @@ const ResultPage = () => {
         })
     }
 
+    const getTestSummaryChartData = (name) =>{
+        return new Promise((resolve, reject) =>{
+            const data = testChartSummary(name);
+            resolve(data);
+        })
+    }
+
+    const getTestSummaryData = (name) =>{
+        return new Promise((resolve, reject) =>{
+            const data = testSummary(name);
+            resolve(data);
+        })
+    }
+
     const initTask = async () => {
         const data = await getUserListData()
         const modifiedUsers = data["userList"].map(user => ({ name: user,  online : false}));
@@ -153,11 +213,19 @@ const ResultPage = () => {
         const countData = await getContentCountData(user.current[0].name)
         setContentCountData(countData)
         const contentChartData = await getContentSummaryChartData(user.current[0].name)
+        const polChartData = await getTestSummaryChartData(user.current[0].name)
         for (let i = 0; i < lineData.length; i++) {
             lineData[i].latest = contentChartData.latest[i];
             lineData[i].now = contentChartData.now[i];
+            polarData[i].latest = polChartData.latest[i];
+            polarData[i].now = polChartData.now[i];
         }
+        console.log(polarData)
         setContentChartData(lineData)
+        setTestChartData(polarData)
+
+        const testData = await getTestSummaryData(user.current[0].name)
+        setTestData(testData)
     }
 
     const runTask = async () => {
@@ -166,11 +234,20 @@ const ResultPage = () => {
         const countData = await getContentCountData(selectUser)
         setContentCountData(countData)
         const contentChartData = await getContentSummaryChartData(selectUser)
+        const polChartData = await getTestSummaryChartData(selectUser)
         for (let i = 0; i < lineData.length; i++) {
             lineData[i].latest = contentChartData.latest[i];
             lineData[i].now = contentChartData.now[i];
+            polarData[i].latest = polChartData.latest[i];
+            polarData[i].now = polChartData.now[i];
         }
         setContentChartData(lineData)
+        setTestChartData(polarData)
+
+        const testData = await getTestSummaryData(selectUser)
+        setTestData(testData)
+
+
     }
 
 
@@ -244,72 +321,15 @@ const ResultPage = () => {
                 <div className="total-top">
                     <ProgressContent contentCountData={contentCountData}/>
 
-                    <TestSummaryChart/>
+                    <TestSummaryChart testChartData={testChartData}/>
 
                     <LineSummary contentChartData={contentChartData}/>
                 </div>
 
-
                 <div className="total-bottom">
-                    <div className="total-contents">
-                        <div className="total-container">
-                            <div className="total-title">하스스톤</div>
-                        </div>
-                        <table className="total-table">
-                            <colgroup>
-                                <col/>
-                                <col/>
-                                <col/>
-                                <col/>
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th>날짜</th>
-                                <th>점수</th>
-                                <th>진행률</th>
-                                <th>진행률</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>2024-03-28</td>
-                                <td>34점</td>
-                                <td>67%</td>
-
-                            </tr>
-                            <tr>
-                                <td>2024-03-28</td>
-                                <td>34점</td>
-                                <td>67%</td>
-
-                            </tr>
-                            <tr>
-                                <td>2024-03-28</td>
-                                <td>34점</td>
-                                <td>67%</td>
-
-                            </tr>
-                            <tr>
-                                <td>2024-03-28</td>
-                                <td>34점</td>
-                                <td>67%</td>
-
-                            </tr>
-                            <tr>
-                                <td>2024-03-28</td>
-                                <td>34점</td>
-                                <td>67%</td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div className="total-detail">
-                            <a href="http://localhost:3000">더보기</a>
-                        </div>
-                    </div>
+                    <TestSummary testData={testData}/>
                     <ContentSummary contentData={contentData}/>
                 </div>
-
 
             </div>
         </div>

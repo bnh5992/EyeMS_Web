@@ -10,7 +10,7 @@ import TestPage from "./views/resultPage/TestPage";
 import RealTimePage from "./views/websocket/RealTimePage";
 import ManagePage from "./views/mainPage/ManagePage";
 import MonitoringPage from "./views/websocket/MonitoringPage";
-import TimegraphPage from "./views/resultPage/TimeGraphPage";
+import ContentDetailPage from "./views/resultPage/ContentDetailPage";
 function App() {
   return (
       <Routes>
@@ -22,7 +22,7 @@ function App() {
           <Route path="/monitoring" element={<MonitoringPage/>}/>
           <Route path="/realtime" element={<RealTimePage/>}/>
           <Route path="/manage" element={<ManagePage/>}/>
-          <Route path="/timegraph" element={<TimegraphPage/>}/>
+          <Route path="/contentdetail" element={<ContentDetailPage/>}/>
       </Routes>
   );
 };

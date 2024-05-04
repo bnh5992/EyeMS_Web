@@ -3,29 +3,29 @@ import person from "../../assets/image/myPage/person.png"
 import "../../assets/css/manage.css"
 import React, {useEffect, useState} from "react";
 import SideBar from "./SideBar";
+import UserUpdate from "./UserUpdate";
+import UserAdd from "./UserAdd";
 
 
 const ManagePage = () => {
-
-
-    const data = ['데이터1', '데이터2', '데이터3', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4', '데이터4'];
-    const [info, setInfo] = useState(false)
+    const [selectUser, setSelectUser] = useState('');
+    const [isAdd, setIsAdd] = useState(true)
     const [userInfo, setUserInfo] = useState({
-        userId : "",
-        password : "",
-        name : "",
-        birth : "2000-01-01",
-        phone : "",
-        email : "",
-        address : "",
-        glasses : "",
-        gender : ""
     })
+    const [reloadCount, setReloadCount] = useState(0);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        userList();
-    }, []);
+        if(selectUser === ''){
+            userList();
+            return
+        }
+        selectUserList();
+
+    }, [selectUser, reloadCount]);
+
+
+
     const userList = async () => {
         const token = localStorage.getItem('token')
         try {
@@ -39,8 +39,49 @@ const ManagePage = () => {
                 mode: 'cors'
             });
             const data = await response.json();
-            setUsers(data.userList);
-            console.log(users)
+            await setUsers(data.userList);
+        } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+    };
+
+    const selectUserList = async () => {
+        const token = localStorage.getItem('token')
+        console.log(users)
+        try {
+            const response = await fetch('http://localhost:8080/user/user/' + selectUser, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+
+                mode: 'cors'
+            });
+            const data = await response.json();
+            await setUsers(data.userList);
+        } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+    };
+
+    const deleteUser = async (userId) => {
+        const token = localStorage.getItem('token')
+        console.log(JSON.stringify({userId}))
+        try {
+            const response = await fetch("http://localhost:8080/user/delete", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({userId}),
+                mode: 'cors'
+            });
+            const data = await response.json();
+            const now = reloadCount+1
+            setReloadCount(now)
+            console.log(data)
         } catch (error) {
             console.error("데이터를 가져오는 중 오류 발생:", error);
         }
@@ -76,8 +117,17 @@ const ManagePage = () => {
     };
 
     const handleShowUserInfo = (user) => {
+        setIsAdd(false)
         fetchUserInfo(user)
-        setInfo(true)
+    }
+
+    const handleDeleteUser = (user) => {
+        deleteUser(user)
+    }
+
+    const handleAddClick = () => {
+
+        setIsAdd(true)
     }
 
     return (
@@ -85,100 +135,33 @@ const ManagePage = () => {
             <SideBar/>
             {/* 오른쪽 콘텐츠 */}
             <div className="manage-wrap">
-                <div className="mypage-mypage">회원(?) 관리</div>
+                <div className="mypage-mypage">회원 관리</div>
                 <div className="manage-container">
                     <div className="manage-list">
 
                         <div className="manage-title">
                             <span>회원 목록</span>
-                            <button className="manage-add"></button>
+                            <button className="manage-add" onClick={handleAddClick}></button>
                         </div>
 
                         <div className="manage-search-box">
-                            <input type="text" id="manage-search" placeholder="이름? 아이디?"/>
-                            <button className="test-search-button"></button>
+                            <input type="text" id="manage-search" placeholder="아이디"
+                                value={selectUser} onChange={(e) => setSelectUser(e.target.value)}
+                            />
                         </div>
 
                         <div className="manage-list-box">
                             {users.map((user, idx) => (
                                 <div key={idx} className="manage-user">
                                     <button onClick={() => handleShowUserInfo(user)}>{user}</button>
+                                    <button onClick={() => handleDeleteUser(user)}> 삭제</button>
                                 </div>
                             ))}
                         </div>
 
                     </div>
-                    <div className="manage-manage">
-                        <div className="mypage-innerBox2">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">아이디</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox3">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">비밀번호</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox4">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">비밀번호 확인</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox2">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">이름</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox3">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">생년월일</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox3">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">성별</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox3">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">전화번호</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox3">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">이메일</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox3">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">주소</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox3">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">안경착용</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-innerBox4">
-                            <div className="mypage-infomation2">
-                                <div className="mypage-bold">가입일</div>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div className="mypage-btn">
-                            <button>수정</button>
-                        </div>
-                    </div>
+                    {!isAdd &&<UserUpdate userInfo={userInfo}/>}
+                    {isAdd && <UserAdd/>}
                 </div>
             </div>
         </div>
