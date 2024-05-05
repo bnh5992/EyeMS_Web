@@ -2,20 +2,81 @@ import horiz from "../../assets/image/testPage/horiz.png"
 
 import "../../assets/css/test.css"
 import SideBar from "../mainPage/SideBar";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const ContentPage = () => {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const[contentData, setContentData] = useState([{}])
+    const[contentName, setContentName] = useState('')
+    useEffect(() => {
+        userContentAllInfo()
+        setContentName('Content1')
+    }, []);
 
-    const handleSearchInputChange = (event) => {
-        setSearchQuery(event.target.value);
+    const userContentAllInfo = async () => {
+        const token = localStorage.getItem('token')
+        try {
+            const response = await fetch("http://localhost:8080/user/summarycontentall", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                mode: 'cors'
+            });
+            if (response.ok) {
+                response.json().then(data => {
+                    setContentData(data)
+
+                }).catch(error => {
+                    console.error('JSON 파싱 오류:', error);
+                });
+            } else {
+                console.error('로그인 실패');
+            }
+        } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
     };
 
-    const handleSearchButtonClick = () => {
-        // 여기에 검색 기능 구현
-        console.log('Search Query:', searchQuery);
-    };
+    const selectBetweenData = async () => {
+        const agencyId = localStorage.getItem("agencyId")
+        const selectBox = document.querySelector('#contents-select');
 
+        selectBox.addEventListener('change', () => {
+            const value = selectBox.options[selectBox.selectedIndex].value;
+            setContentName(value)
+        });
+        console.log(contentName)
+        if(contentName === 'All'){
+            userContentAllInfo()
+            return
+        }
+        try {
+            const response = await fetch('http://localhost:8080/user/betweencontent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({startDate, endDate, contentName, agencyId}),
+                mode: 'cors',
+            })
+            if (response.ok) {
+                response.json().then(data => {
+                    console.log(data)
+                    setContentData(data)
+
+                }).catch(error => {
+                    console.error('JSON 파싱 오류:', error);
+                });
+            } else {
+                console.error('실패');
+            }
+        } catch (error) {
+            console.error('오류 발생:', error);
+        }
+    }
 
     return (
         <div>
@@ -26,19 +87,25 @@ const ContentPage = () => {
                     {/*오빠가 해야할 일은 여기서 날짜 선택 범위(기간이니까 뒤에 선택 한 게 더 빠르면 안 됨)랑 날짜 선택시 value 변경*/}
                     <div class="test-options">
                         <div>
-                            <input type="date" id="test-date" max="2024-12-31" min="2000-01-01" value="2024-04-07"/>
+                            <input type="date" id="test-date" max="2024-12-31" min="2000-01-01" value={startDate}
+                                   onChange={(e) => setStartDate(e.target.value)}/>
                             <img id="test-img" src={horiz} alt="" />
-                            <input type="date" id="test-date" max="2024-12-31" min="2000-01-01" value="2024-04-07"/>
+                            <input type="date" id="test-date" max="2024-12-31" min="2000-01-01" value={endDate}
+                                   onChange={(e) => setEndDate(e.target.value)}/>
                         </div>
 
                         <div className={"test-search-container"}>
 
                             <select name="drop1" id="contents-select">
-                                <option value="">콘텐츠 1</option>
-                                <option value="">콘텐츠 2</option>
-                                <option value="">콘텐츠 3</option>
+                                <option value="All" >전체</option>
+                                <option value="Content1" >콘텐츠 1</option>
+                                <option value="Content2" >콘텐츠 2</option>
+                                <option value="Content3" >콘텐츠 3</option>
+                                <option value="Content4" >콘텐츠 4</option>
+                                <option value="Content5" >콘텐츠 5</option>
+                                <option value="Content6" >콘텐츠 6</option>
                             </select>
-                            <button className="test-search-button" onClick={handleSearchButtonClick}></button>
+                            <button className="test-search-button" onClick={selectBetweenData}></button>
                         </div>
                     </div>
 
@@ -53,36 +120,21 @@ const ContentPage = () => {
                         <thead>
                         <tr id="bg">
                             <th>날짜</th>
-                            <th>소요시간</th>
-                            <th>진행률</th>
-                            <th>시계열 그래프</th>
+                            <th>유저</th>
+                            <th>컨텐츠 이름</th>
+                            <th>점수</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>2024-04-07</td>
-                            <td>34분</td>
-                            <td>67%</td>
-                            <td>뭬</td>
-                        </tr>
-                        <tr>
-                            <td>2024-04-07</td>
-                            <td>34분</td>
-                            <td>67%</td>
-                            <td>뭬</td>
-                        </tr>
-                        <tr>
-                            <td>2024-04-07</td>
-                            <td>34분</td>
-                            <td>67%</td>
-                            <td>뭬</td>
-                        </tr>
-                        <tr>
-                            <td>2024-04-07</td>
-                            <td>34분</td>
-                            <td>67%</td>
-                            <td>뭬</td>
-                        </tr>
+                        <tbody>{contentData.map((data) => (
+                                <tr>
+                                    <td>{data.date}</td>
+                                    <td>{data.userId}</td>
+                                    <td>{data.contentName}</td>
+                                    <td>{data.score}</td>
+                                </tr>
+                            ))
+                        }
+
                         </tbody>
                     </table>
                 </div>

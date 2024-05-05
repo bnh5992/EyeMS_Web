@@ -39,7 +39,7 @@ const ContentSummary = ({contentData}) => {
             </table>
 
             <div className="total-detail">
-                <a href="http://localhost:3000">더보기</a>
+                <a href="http://localhost:3000/contentdetail">더보기</a>
             </div>
         </div>
     )
