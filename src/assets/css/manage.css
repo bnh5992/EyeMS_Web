@@ -12,7 +12,7 @@
 
 .manage-list{
     width: 300px;
-    height: 730px;
+    height: 740px;
     border-radius: 24px;
     border: 1px solid rgba(126, 150, 255, 0.16);
     box-shadow: 0px 0px 20px rgba(126, 150, 255, 0.16);
@@ -47,19 +47,18 @@
 
 .manage-search-box{
     width: 100%;
-    justify-content: space-between;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
 #manage-search{
+    width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 16px;
     flex: 1;
-    margin-right: 10px;
     background-color: #F9FAFD;
 }
 
@@ -75,13 +74,16 @@
 }
 
 .manage-user{
-    background-color: #eee;
+    border: 2px solid rgba(192, 192, 192, 0.16);
+    background-color: #f9f9f9;
     margin: 10px 10px 0 10px;
     padding: 5px;
     border-radius: 5px;
 }
 
-
+.manage-user button{
+    background-color: #f9f9f9;
+}
 
 
 .manage-list-box button{
@@ -96,7 +98,7 @@
 
 .manage-manage{
     width: 660px;
-    height: 730px;
+    height: 740px;
     border-radius: 24px;
     background-color: #fff;
     border: 1px solid rgba(126, 150, 255, 0.16);

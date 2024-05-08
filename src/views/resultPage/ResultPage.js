@@ -1,4 +1,3 @@
-
 import "../../assets/css/result.css"
 import React, {useEffect, useRef, useState} from "react";
 import SideBar from "../mainPage/SideBar";
@@ -12,34 +11,74 @@ import TestSummary from "./TestSummary";
 
 const ResultPage = () => {
     const lineData = [
-        { name: 'content1', latest: 4000, now: 2400},
-        { name: 'content2', latest: 3000, now: 1398},
-        { name: 'content3', latest: 2000, now: 9800},
-        { name: 'content4', latest: 2780, now: 3908},
-        { name: 'content5', latest: 1890, now: 4800},
-        { name: 'content6', latest: 2390, now: 3800},
+        {name: 'content1', latest: 4000, now: 2400},
+        {name: 'content2', latest: 3000, now: 1398},
+        {name: 'content3', latest: 2000, now: 9800},
+        {name: 'content4', latest: 2780, now: 3908},
+        {name: 'content5', latest: 1890, now: 4800},
+        {name: 'content6', latest: 2390, now: 3800},
     ];
 
     const polarData = [
-        { subject: '정확도', latest: 120, now: 110 },
-        { subject: '고정횟수', latest: 98, now: 130 },
-        { subject: '풀이시간', latest: 86, now: 100 },
-        { subject: '회귀', latest: 99, now: 85 },
-        { subject: '도약', latest: 85, now: 90 },
-        { subject: '총시간', latest: 95, now: 70 },
+        {subject: '정확도', latest: 120, now: 110},
+        {subject: '고정횟수', latest: 98, now: 130},
+        {subject: '풀이시간', latest: 86, now: 100},
+        {subject: '회귀', latest: 99, now: 85},
+        {subject: '도약', latest: 85, now: 90},
+        {subject: '총시간', latest: 95, now: 70},
     ];
 
     const summaryTestData = [
-        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
-        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
-        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
-        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' },
-        { date: '2024-03-28', accurate: '34점', fixCount: '67%', questionTime: '67%', regression: '67%', saccade: '67%', totalReadTime: '67%' }
+        {
+            date: '2024-03-28',
+            accurate: '34점',
+            fixCount: '67%',
+            questionTime: '67%',
+            regression: '67%',
+            saccade: '67%',
+            totalReadTime: '67%'
+        },
+        {
+            date: '2024-03-28',
+            accurate: '34점',
+            fixCount: '67%',
+            questionTime: '67%',
+            regression: '67%',
+            saccade: '67%',
+            totalReadTime: '67%'
+        },
+        {
+            date: '2024-03-28',
+            accurate: '34점',
+            fixCount: '67%',
+            questionTime: '67%',
+            regression: '67%',
+            saccade: '67%',
+            totalReadTime: '67%'
+        },
+        {
+            date: '2024-03-28',
+            accurate: '34점',
+            fixCount: '67%',
+            questionTime: '67%',
+            regression: '67%',
+            saccade: '67%',
+            totalReadTime: '67%'
+        },
+        {
+            date: '2024-03-28',
+            accurate: '34점',
+            fixCount: '67%',
+            questionTime: '67%',
+            regression: '67%',
+            saccade: '67%',
+            totalReadTime: '67%'
+        }
     ];
 
 
     const client = useRef(null);
-    const user = useRef([{name : null, online : false}])
+    const user = useRef([{}])
     const [updateUser, setUpdateUser] = useState([{}])
     const [contentData, setContentData] = useState([{}])
     const [testData, setTestData] = useState([{}])
@@ -49,9 +88,9 @@ const ResultPage = () => {
     const [selectUser, setSelectUser] = useState("")
 
     const summary = async (name) => {
-        if(name !=null){
+        if (name != null) {
             try {
-                const response = await fetch('http://localhost:8080/user/summerycontent/'+name, {
+                const response = await fetch('http://localhost:8080/user/summerycontent/' + name, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -67,9 +106,9 @@ const ResultPage = () => {
     };
 
     const testSummary = async (name) => {
-        if(name !=null){
+        if (name != null) {
             try {
-                const response = await fetch('http://localhost:8080/user/summarytest/'+name, {
+                const response = await fetch('http://localhost:8080/user/summarytest/' + name, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -103,9 +142,9 @@ const ResultPage = () => {
     };
 
     const contentCountList = async (name) => {
-        if(name !=null){
+        if (name != null) {
             try {
-                const response = await fetch('http://localhost:8080/user/countcontent/'+name, {
+                const response = await fetch('http://localhost:8080/user/countcontent/' + name, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -120,9 +159,9 @@ const ResultPage = () => {
     };
 
     const testChartSummary = async (name) => {
-        if(name !=null){
+        if (name != null) {
             try {
-                const response = await fetch('http://localhost:8080/user/latesttest/'+name, {
+                const response = await fetch('http://localhost:8080/user/latesttest/' + name, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -137,9 +176,9 @@ const ResultPage = () => {
     };
 
     const contentSummaryChart = async (name) => {
-        if(name !=null){
+        if (name != null) {
             try {
-                const response = await fetch('http://localhost:8080/user/latestcontent/'+name, {
+                const response = await fetch('http://localhost:8080/user/latestcontent/' + name, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -153,50 +192,51 @@ const ResultPage = () => {
         }
     }
 
-    const getSummaryData = (name) =>{
-        return new Promise((resolve, reject) =>{
+    const getSummaryData = (name) => {
+        return new Promise((resolve, reject) => {
             const data = summary(name);
+
             resolve(data);
         })
     }
 
-    const getUserListData = () =>{
-        return new Promise((resolve, reject) =>{
+    const getUserListData = () => {
+        return new Promise((resolve, reject) => {
             const data = userList();
             resolve(data);
         })
     }
 
-    const getSocket = () =>{
-        return new Promise((resolve, reject) =>{
+    const getSocket = () => {
+        return new Promise((resolve, reject) => {
             const data = openSocket();
             resolve(data);
         })
     }
 
-    const getContentCountData = (name) =>{
-        return new Promise((resolve, reject) =>{
+    const getContentCountData = (name) => {
+        return new Promise((resolve, reject) => {
             const data = contentCountList(name);
             resolve(data);
         })
     }
 
-    const getContentSummaryChartData = (name) =>{
-        return new Promise((resolve, reject) =>{
+    const getContentSummaryChartData = (name) => {
+        return new Promise((resolve, reject) => {
             const data = contentSummaryChart(name);
             resolve(data);
         })
     }
 
-    const getTestSummaryChartData = (name) =>{
-        return new Promise((resolve, reject) =>{
+    const getTestSummaryChartData = (name) => {
+        return new Promise((resolve, reject) => {
             const data = testChartSummary(name);
             resolve(data);
         })
     }
 
-    const getTestSummaryData = (name) =>{
-        return new Promise((resolve, reject) =>{
+    const getTestSummaryData = (name) => {
+        return new Promise((resolve, reject) => {
             const data = testSummary(name);
             resolve(data);
         })
@@ -204,53 +244,60 @@ const ResultPage = () => {
 
     const initTask = async () => {
         const data = await getUserListData()
-        const modifiedUsers = data["userList"].map(user => ({ name: user,  online : false}));
-        user.current = modifiedUsers
-
-        const socket = await getSocket()
-        const summaryData = await getSummaryData(user.current[0].name)
-        setContentData(summaryData)
-        const countData = await getContentCountData(user.current[0].name)
-        setContentCountData(countData)
-        const contentChartData = await getContentSummaryChartData(user.current[0].name)
-        const polChartData = await getTestSummaryChartData(user.current[0].name)
-        for (let i = 0; i < lineData.length; i++) {
-            lineData[i].latest = contentChartData.latest[i];
-            lineData[i].now = contentChartData.now[i];
-            polarData[i].latest = polChartData.latest[i];
-            polarData[i].now = polChartData.now[i];
+        console.log(data["userList"].length)
+        if (data["userList"].length !== 0) {
+            const modifiedUsers = data["userList"].map(user => ({name: user, online: false}));
+            user.current = modifiedUsers
+            const socket = await getSocket()
         }
-        console.log(polarData)
-        setContentChartData(lineData)
-        setTestChartData(polarData)
+        console.log(user.current)
+        if (user.current[0].name !== undefined) {
+            console.log(2)
+            const summaryData = await getSummaryData(user.current[0].name)
+            setContentData(summaryData)
+            const countData = await getContentCountData(user.current[0].name)
+            setContentCountData(countData)
+            const contentChartData = await getContentSummaryChartData(user.current[0].name)
+            const polChartData = await getTestSummaryChartData(user.current[0].name)
+            console.log(contentChartData)
+            for (let i = 0; i < lineData.length; i++) {
+                lineData[i].latest = contentChartData.latest[i];
+                lineData[i].now = contentChartData.now[i];
+                polarData[i].latest = polChartData.latest[i];
+                polarData[i].now = polChartData.now[i];
+            }
+            setContentChartData(lineData)
+            setTestChartData(polarData)
 
-        const testData = await getTestSummaryData(user.current[0].name)
-        setTestData(testData)
+            const testData = await getTestSummaryData(user.current[0].name)
+            setTestData(testData)
+        }
+
     }
 
     const runTask = async () => {
-        const summaryData = await getSummaryData(selectUser)
-        setContentData(summaryData)
-        const countData = await getContentCountData(selectUser)
-        setContentCountData(countData)
-        const contentChartData = await getContentSummaryChartData(selectUser)
-        const polChartData = await getTestSummaryChartData(selectUser)
-        for (let i = 0; i < lineData.length; i++) {
-            lineData[i].latest = contentChartData.latest[i];
-            lineData[i].now = contentChartData.now[i];
-            polarData[i].latest = polChartData.latest[i];
-            polarData[i].now = polChartData.now[i];
-        }
-        setContentChartData(lineData)
-        setTestChartData(polarData)
+        if (user.current[0].name !== undefined) {
+            const summaryData = await getSummaryData(selectUser)
+            setContentData(summaryData)
+            const countData = await getContentCountData(selectUser)
+            setContentCountData(countData)
+            const contentChartData = await getContentSummaryChartData(selectUser)
+            const polChartData = await getTestSummaryChartData(selectUser)
+            for (let i = 0; i < lineData.length; i++) {
+                lineData[i].latest = contentChartData.latest[i];
+                lineData[i].now = contentChartData.now[i];
+                polarData[i].latest = polChartData.latest[i];
+                polarData[i].now = polChartData.now[i];
+            }
+            setContentChartData(lineData)
+            setTestChartData(polarData)
 
-        const testData = await getTestSummaryData(selectUser)
-        setTestData(testData)
+            const testData = await getTestSummaryData(selectUser)
+            setTestData(testData)
+        }
 
 
     }
-
-
 
 
     useEffect(() => {
@@ -258,7 +305,7 @@ const ResultPage = () => {
     }, []);
 
     useEffect(() => {
-        if(selectUser !== ""){
+        if (selectUser !== "") {
             runTask()
         }
 
@@ -271,13 +318,16 @@ const ResultPage = () => {
             onConnect: () => {
                 console.log("connect")
                 client.current.subscribe(`/sub/enter/chat/room/` + localStorage.getItem("roomId"), (message) => {
-                    const msg = JSON.parse(message.body);
-                    const updateUser = user.current.map(userName => ({
-                        name : userName.name,
-                        online : msg[0].message.list.includes(userName.name)
+                    const msg = JSON.parse(message.body)
+                    console.log(msg)
+
+                    const updateUsers = user.current.map(userName => ({
+                        name: userName.name,
+                        online: msg[0].message.list.includes(userName.name)
                     }));
-                    setUpdateUser(updateUser)
-                    user.current = updateUser
+                    setUpdateUser(updateUsers)
+                    user.current = updateUsers
+
                 });
 
                 handleConnectionChange();

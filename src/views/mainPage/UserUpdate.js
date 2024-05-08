@@ -25,6 +25,24 @@ const UserUpdate = ({userInfo}) => {
         setDate(userInfo.date)
     }, [userInfo]);
 
+    const deleteUser = async (userId) => {
+        const token = localStorage.getItem('token')
+        try {
+            const response = await fetch("http://localhost:8080/user/delete", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({userId}),
+                mode: 'cors'
+            });
+            const data = await response.json();
+        } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+        window.location.reload();
+    };
     const handleUpdateUser = async () => {
         try {
             const token = localStorage.getItem('token')
@@ -122,7 +140,9 @@ const UserUpdate = ({userInfo}) => {
                 </div>
             </div>
             <div className="mypage-btn">
-                <button onClick={handleUpdateUser}>수정</button>
+                {/*<button onClick={handleDeleteUser}>삭제</button>*/}
+                <button id="mypage-delete" onClick={()=> deleteUser(userId)}>삭제</button>
+                <button id="mypage-update" onClick={handleUpdateUser}>수정</button>
             </div>
         </div>
     )

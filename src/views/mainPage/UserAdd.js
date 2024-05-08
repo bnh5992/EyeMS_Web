@@ -97,14 +97,14 @@ const UserAdd = () => {
                     <input type="text" value={address} onChange={(e) => setAddress(e.target.value)}/>
                 </div>
             </div>
-            <div className="mypage-innerBox3">
+            <div className="mypage-innerBox4">
                 <div className="mypage-infomation2">
                     <div className="mypage-bold">안경착용</div>
                     <input type="text" value={glasses} onChange={(e) => setGlasses(e.target.value)}/>
                 </div>
             </div>
             <div className="mypage-btn">
-                <button onClick={handleSignUp}>추가</button>
+                <button id="mypage-update" onClick={handleSignUp}>추가</button>
             </div>
         </div>
     )

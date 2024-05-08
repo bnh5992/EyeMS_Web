@@ -88,11 +88,16 @@ const MyPage = () => {
 
                 mode: 'cors'
             });
+
             return await response.json();
         } catch (error) {
             console.error("데이터를 가져오는 중 오류 발생:", error);
         }
 
+    };
+
+    const showAlert = () => {
+        alert('회원 정보가 수정되었습니다.');
     };
 
     const handleUpdateAgencyInfo = async () => {
@@ -119,7 +124,7 @@ const MyPage = () => {
             } else {
                 console.error('가입 실패');
             }
-
+            showAlert();
         } catch (error) {
             console.error('오류 발생:', error);
         }
@@ -225,7 +230,7 @@ const MyPage = () => {
                         </div>
                     </div>
                     <div className="mypage-btn">
-                        <button onClick={handleUpdateAgencyInfo}>수정</button>
+                        <button id="mypage-update" onClick={handleUpdateAgencyInfo}>수정</button>
                     </div>
                 </div>
             </div>

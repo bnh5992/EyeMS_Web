@@ -120,7 +120,7 @@ const TestPage = () => {
             <SideBar/>
             {!isDetail && <div className="test-main">
                 <div className="mypage-mypage">진단결과 > 목록</div>
-                <div className="test-days">
+                <div className="test-days2">
                     <div className="test-options">
                         <div>
                             <input type="date" id="test-date" max="2024-12-31" min="2000-01-01" value={startD}
@@ -137,7 +137,6 @@ const TestPage = () => {
                         </div>
                     </div>
 
-                    {/*오빠가 해야할 일은 여기서 데이터 개수만큼 차트 만들기. (반복문으로 해야것지...?)*/}
                     <table className="test-table">
                         <colgroup>
                             <col/>

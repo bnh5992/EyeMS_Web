@@ -220,16 +220,19 @@
 
 /* 버튼 */
 .mypage-btn{
-    width: 30px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
     height: 50px;
-    margin-left: auto;
     margin-right: 40px;
+    margin-left: auto;
 }
 
-.mypage-btn button{
+#mypage-update{
     width: 70px;
     height: 40px;
 
+    margin-left: 10px;
     background-color: #4B65F6;
     border-radius: 5px;
     border: none;
@@ -237,7 +240,19 @@
     font-size: 16px;
     font-weight: 700;
     text-align: center;
+}
 
+#mypage-delete{
+    width: 70px;
+    height: 40px;
+
+    background-color: #FF5555;
+    border-radius: 5px;
+    border: none;
+    color:white;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .mypage-btn button:hover{

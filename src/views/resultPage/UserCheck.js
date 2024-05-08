@@ -12,13 +12,14 @@ const UserCheck = ({user, updateUser, setSelectUser}) =>{
     }
 
     useEffect(() => {
+        console.log(user.current)
     }, [updateUser]);
     return (
         <div>
             <button className="total-toggle-btn" onClick={toggleOverlay}></button>
             {isOverlayVisible &&
                 <div id="overlay">
-                    {user.current.map((users) => (
+                    {user.current[0].name !== undefined && user.current.map((users) => (
                         <div className="total-user-list">
                             <button onClick={handleUserChange} value={users.name}>{users.name}</button>
                             <div className={'total-user-'+(users.online ? 'on' : 'off')}></div>
