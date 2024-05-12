@@ -102,6 +102,8 @@ const MyPage = () => {
 
         const token = localStorage.getItem('token')
         try {
+            if (showDeleteAlert() === false) return;
+
             const response = await fetch("http://localhost:8080/agency/delete", {
                 method: 'POST',
                 headers: {
@@ -129,13 +131,21 @@ const MyPage = () => {
     };
 
     const showAlert = () => {
-        const result = window.confirm('기관 정보를 수정하시겠습니까?');
+        const result = window.confirm('정보를 수정하시겠습니까?');
         return result;
     };
+
+    const showDeleteAlert = () => {
+        const result = window.confirm('탈퇴하시겠습니까?');
+        return result;
+
+    };
+
 
     const handleUpdateAgencyInfo = async () => {
         try {
             if(!passwordsMatch) return
+            if (showAlert() === false) return;
             const token = localStorage.getItem('token')
 
             const response = await fetch('http://localhost:8080/agency/update', {
@@ -157,7 +167,6 @@ const MyPage = () => {
             } else {
                 console.error('가입 실패');
             }
-            showAlert();
         } catch (error) {
             console.error('오류 발생:', error);
         }
