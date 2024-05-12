@@ -11,21 +11,21 @@ import TestSummary from "./TestSummary";
 
 const ResultPage = () => {
     const lineData = [
-        {name: 'content1', latest: 4000, now: 2400},
-        {name: 'content2', latest: 3000, now: 1398},
-        {name: 'content3', latest: 2000, now: 9800},
-        {name: 'content4', latest: 2780, now: 3908},
-        {name: 'content5', latest: 1890, now: 4800},
-        {name: 'content6', latest: 2390, now: 3800},
+        {name: 'content1', latest: 0, now: 0},
+        {name: 'content2', latest: 0, now: 0},
+        {name: 'content3', latest: 0, now: 0},
+        {name: 'content4', latest: 0, now: 0},
+        {name: 'content5', latest: 0, now: 0},
+        {name: 'content6', latest: 0, now: 0},
     ];
 
     const polarData = [
-        {subject: '정확도', latest: 120, now: 110},
-        {subject: '고정횟수', latest: 98, now: 130},
-        {subject: '풀이시간', latest: 86, now: 100},
-        {subject: '회귀', latest: 99, now: 85},
-        {subject: '도약', latest: 85, now: 90},
-        {subject: '총시간', latest: 95, now: 70},
+        {subject: '정확도', latest: 0, now: 0},
+        {subject: '고정횟수', latest: 0, now: 0},
+        {subject: '풀이시간', latest: 0, now: 0},
+        {subject: '회귀', latest: 0, now: 0},
+        {subject: '도약', latest: 0, now: 0},
+        {subject: '총시간', latest: 0, now: 0},
     ];
 
     const summaryTestData = [
@@ -83,8 +83,20 @@ const ResultPage = () => {
     const [contentData, setContentData] = useState([{}])
     const [testData, setTestData] = useState([{}])
     const [contentCountData, setContentCountData] = useState([{}])
-    const [contentChartData, setContentChartData] = useState([{}])
-    const [testChartData, setTestChartData] = useState([{}])
+    const [contentChartData, setContentChartData] = useState([
+        {name: 'content1', latest: 0, now: 0},
+        {name: 'content2', latest: 0, now: 0},
+        {name: 'content3', latest: 0, now: 0},
+        {name: 'content4', latest: 0, now: 0},
+        {name: 'content5', latest: 0, now: 0},
+        {name: 'content6', latest: 0, now: 0},])
+    const [testChartData, setTestChartData] = useState([
+        {subject: '정확도', latest: 0, now: 0},
+        {subject: '고정횟수', latest: 0, now: 0},
+        {subject: '풀이시간', latest: 0, now: 0},
+        {subject: '회귀', latest: 0, now: 0},
+        {subject: '도약', latest: 0, now: 0},
+        {subject: '총시간', latest: 0, now: 0},])
     const [selectUser, setSelectUser] = useState("")
 
     const summary = async (name) => {
@@ -252,7 +264,6 @@ const ResultPage = () => {
         }
         console.log(user.current)
         if (user.current[0].name !== undefined) {
-            console.log(2)
             const summaryData = await getSummaryData(user.current[0].name)
             setContentData(summaryData)
             const countData = await getContentCountData(user.current[0].name)
@@ -365,7 +376,7 @@ const ResultPage = () => {
             {/* main */}
             <div className="total-main">
                 <div className="total-top-bar">
-                    <div className="mypage-mypage">종합 결과</div>
+                    <div className="mypage-mypage">{selectUser}님의 종합 결과</div>
                     <UserCheck user={user} updateUser={updateUser} setSelectUser={setSelectUser}/>
                 </div>
                 <div className="total-top">

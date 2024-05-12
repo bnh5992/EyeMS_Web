@@ -65,6 +65,28 @@ const ManagePage = () => {
         }
     };
 
+    const deleteUser = async (userId) => {
+        const token = localStorage.getItem('token')
+        console.log(JSON.stringify({userId}))
+        try {
+            const response = await fetch("http://localhost:8080/user/delete", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({userId}),
+                mode: 'cors'
+            });
+            const data = await response.json();
+            const now = reloadCount+1
+            setReloadCount(now)
+            console.log(data)
+        } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+    };
+
 
 
     const fetchUserInfo = async (userId) => {

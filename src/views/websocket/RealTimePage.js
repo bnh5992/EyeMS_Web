@@ -157,7 +157,7 @@ const RealTimePage = ({setShowButton, selectedUser, client}) => {
 
     return (
         <div>
-            <div className={isGraphVisible ? "real-body" : 'real-body-margin'}>
+            <div className= "real-body-margin">
                 <div className="mypage-mypage">실시간 모니터링</div>
                 <div className="real-main">
                     <div
@@ -173,7 +173,7 @@ const RealTimePage = ({setShowButton, selectedUser, client}) => {
                 </div>
             </div>
 
-            <button className={isGraphVisible ? "time-show-graph" : 'time-no-show'}
+            {/*<button className={isGraphVisible ? "time-show-graph" : "time-no-show'}
                     onClick={toggleGraphVisibility}></button>
             <div className={isGraphVisible ? 'real-graph' : 'real-graph-hidden'}>
                 <LineChart width={1000} height={200} data={nowData}>
@@ -185,7 +185,7 @@ const RealTimePage = ({setShowButton, selectedUser, client}) => {
                     <Line type="monotone" dataKey="x" stroke="#8884d8"/>
                     <Line type="monotone" dataKey="y" stroke="#8884d8"/>
                 </LineChart>
-            </div>
+            </div>*/}
         </div>
 
     )

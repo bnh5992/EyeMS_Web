@@ -200,6 +200,7 @@
     border-collapse: collapse;
 }
 
+
 .total-container {
     display: flex;
     justify-content: space-between;
@@ -225,14 +226,14 @@
     background-color: #EFF2FF;
 }
 .total-table th{
-    text-align: left;
+    text-align: center;
     font-size: 20px;
     color: #888888;
     font-weight: 600;
     padding: 10px 20px;
 }
 .total-table td{
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     color: #666666;
     font-weight: 500;

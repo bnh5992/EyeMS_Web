@@ -104,7 +104,7 @@ const SignUp = () => {
                         src={logo}
                     />
                     <h2 id="signup-info">
-                        보호자 회원가입
+                        회원가입
                     </h2>
                 </div>
                 <div className="signup-login">

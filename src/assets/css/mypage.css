@@ -259,3 +259,16 @@
     background-color: #98A7FA;
     cursor: pointer;
 }
+
+
+#logout-btn{
+    background-color: #F9FAFD;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#logout-btn:hover{
+    cursor: pointer;
+    color: #4B65F6;
+}

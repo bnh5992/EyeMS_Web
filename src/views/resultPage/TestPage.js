@@ -119,7 +119,7 @@ const TestPage = () => {
         <div>
             <SideBar/>
             {!isDetail && <div className="test-main">
-                <div className="mypage-mypage">진단결과 > 목록</div>
+                <div className="mypage-mypage">진단 결과 > 목록</div>
                 <div className="test-days2">
                     <div className="test-options">
                         <div>

@@ -62,7 +62,7 @@ const TimegraphPage = ({selectData}) => {
             <SideBar/>
 
             <div className="test-main">
-                <div className="mypage-mypage">진단결과 > 시계열 그래프</div>
+                <div className="mypage-mypage">진단 결과 > 시계열 그래프</div>
                 <div className="test-days">
                     <div>
                         <div className="time-date">{selectData.date.substring(5,7)}월 {selectData.date.substring(8,10)}일 검사</div>

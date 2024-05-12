@@ -56,7 +56,7 @@ const Login = () => {
             <div className="login-window">
                 <div className="login-logo">
                     <img src={logo} alt="" id="login-logo" />
-                    <h2 id="login-info">보호자 로그인</h2>
+                    <h2 id="login-info">로그인</h2>
                 </div>
                 <div className="login">
                     <div id="login-idicon">

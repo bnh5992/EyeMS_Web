@@ -119,10 +119,10 @@ const ContentPage = () => {
                         </colgroup>
                         <thead>
                         <tr id="bg">
-                            <th>날짜</th>
-                            <th>유저</th>
-                            <th>컨텐츠 이름</th>
-                            <th>점수</th>
+                            <th class="test-date">날짜</th>
+                            <th class="test-user">유저</th>
+                            <th class="test-content">컨텐츠 이름</th>
+                            <th class="test-score">점수</th>
                         </tr>
                         </thead>
                         <tbody>{contentData.map((data) => (

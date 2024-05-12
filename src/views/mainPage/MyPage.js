@@ -8,6 +8,7 @@ import person from "../../assets/image/myPage/person.png"
 import "../../assets/css/mypage.css"
 import React, {useEffect, useState} from "react";
 import SideBar from "./SideBar";
+import {useNavigate} from "react-router-dom";
 
 
 const MyPage = () => {
@@ -23,6 +24,7 @@ const MyPage = () => {
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
     const [gender, setGender] = useState('')
+    const navigate = useNavigate();
 
 
     const handleEmailChange = (event) => {
@@ -96,8 +98,39 @@ const MyPage = () => {
 
     };
 
+    const fetchAgencyDelete = async () => {
+
+        const token = localStorage.getItem('token')
+        try {
+            const response = await fetch("http://localhost:8080/agency/delete", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+
+                mode: 'cors'
+            });
+
+            if (response.ok) {
+                response.json().then(data => {
+                    localStorage.clear()
+                    navigate("/")
+                }).catch(error => {
+                    console.error('JSON 파싱 오류:', error);
+                });
+            } else {
+                console.error('탈퇴 실패');
+            }
+        } catch (error) {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+        }
+
+    };
+
     const showAlert = () => {
-        alert('회원 정보가 수정되었습니다.');
+        const result = window.confirm('기관 정보를 수정하시겠습니까?');
+        return result;
     };
 
     const handleUpdateAgencyInfo = async () => {
@@ -134,7 +167,7 @@ const MyPage = () => {
         <div>
             <SideBar/>
             <div className="mypage-wrap">
-                <div className="mypage-mypage">마이페이지 > 회원정보</div>
+                <div className="mypage-mypage">마이페이지 > 기관 정보</div>
                 <div className="mypage-contentBox">
                     <div className="mypage-profile">
                         <img src={person} width="40px" />
@@ -143,7 +176,7 @@ const MyPage = () => {
                     <div className="mypage-innerBox2">
                         <div className="mypage-infomation2">
                             <div className="mypage-bold">비밀번호</div>
-                            <input type="text"
+                            <input type="password"
                                    value={password}
                                    onChange={handlePasswordChange}
                             />
@@ -152,7 +185,7 @@ const MyPage = () => {
                     <div className="mypage-innerBox4">
                         <div className="mypage-infomation2">
                             <div className="mypage-bold">비밀번호 확인</div>
-                            <input type="text"
+                            <input type="password"
                                    value={confirmPassword}
                                    onChange={handleConfirmPasswordChange}
                             />
@@ -230,6 +263,7 @@ const MyPage = () => {
                         </div>
                     </div>
                     <div className="mypage-btn">
+                        <button id="mypage-delete" onClick={fetchAgencyDelete}>탈퇴</button>
                         <button id="mypage-update" onClick={handleUpdateAgencyInfo}>수정</button>
                     </div>
                 </div>

@@ -25,9 +25,23 @@ const UserUpdate = ({userInfo}) => {
         setDate(userInfo.date)
     }, [userInfo]);
 
+    const showDeleteAlert = () => {
+        const result = window.confirm('회원 정보를 삭제하시겠습니까?');
+        return result;
+
+    };
+
+    const showUpdateAlert = () => {
+        const result = window.confirm('회원 정보를 수정하시겠습니까?');
+        return result;
+    };
+
     const deleteUser = async (userId) => {
         const token = localStorage.getItem('token')
         try {
+
+            if (showDeleteAlert() === false) return;
+
             const response = await fetch("http://localhost:8080/user/delete", {
                 method: 'POST',
                 headers: {
@@ -45,6 +59,9 @@ const UserUpdate = ({userInfo}) => {
     };
     const handleUpdateUser = async () => {
         try {
+
+            if (showUpdateAlert() === false) return;
+
             const token = localStorage.getItem('token')
             const response = await fetch('http://localhost:8080/user/update', {
                 method: 'POST',
@@ -69,7 +86,6 @@ const UserUpdate = ({userInfo}) => {
         } catch (error) {
             console.error('오류 발생:', error);
         }
-        window.location.reload();
     };
     return(
         <div className="manage-manage">
