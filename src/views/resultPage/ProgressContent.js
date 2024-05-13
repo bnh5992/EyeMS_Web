@@ -2,22 +2,22 @@ import React, {useEffect, useState} from "react";
 
 const ProgressContent = ({contentCountData}) => {
     const [totalCountData, setTotalCountData]  = useState( [
-        { title: "컨텐츠1", count: "0회" },
-        { title: "컨텐츠2", count: "0회" },
-        { title: "컨텐츠3", count: "0회" },
-        { title: "컨텐츠4", count: "0회" },
-        { title: "컨텐츠5", count: "0회" },
-        { title: "컨텐츠6", count: "0회" },
+        { title: "글자 기억하기", count: "0회" },
+        { title: "과일색 맞추기", count: "0회" },
+        { title: "토끼를 찾아라", count: "0회" },
+        { title: "동물 찾기", count: "0회" },
+        { title: "돌고래를 잡아라", count: "0회" },
+        { title: "관찰 카메라", count: "0회" },
     ]);
     useEffect(() => {
         if(contentCountData.content1 !== undefined){
             setTotalCountData([
-                { title: "컨텐츠1", count: contentCountData.content1+"회" },
-                { title: "컨텐츠2", count: contentCountData.content2+"회" },
-                { title: "컨텐츠3", count: contentCountData.content3+"회" },
-                { title: "컨텐츠4", count: contentCountData.content4+"회" },
-                { title: "컨텐츠5", count: contentCountData.content5+"회" },
-                { title: "컨텐츠6", count: contentCountData.content6+"회" },
+                { title: "글자 기억하기", count: contentCountData.content1+"회" },
+                { title: "과일색 맞추기", count: contentCountData.content2+"회" },
+                { title: "토끼를 찾아라", count: contentCountData.content3+"회" },
+                { title: "동물 찾기", count: contentCountData.content4+"회" },
+                { title: "돌고래를 잡아라", count: contentCountData.content5+"회" },
+                { title: "관찰 카메라", count: contentCountData.content6+"회" },
             ])
         }
 

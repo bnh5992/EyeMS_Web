@@ -10,7 +10,7 @@ const LineSummary = ({contentChartData}) => {
                             <p>진단 결과, 상위 24%로 <b>우수</b> 상태입니다.</p>
                         </div>*/}
             <LineChart
-                width={600}
+                width={800}
                 height={300}
                 data={contentChartData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
