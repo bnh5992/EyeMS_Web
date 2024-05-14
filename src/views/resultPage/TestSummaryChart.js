@@ -2,14 +2,7 @@ import {PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart} from "rec
 
 
 const TestSummaryChart = ({testChartData}) => {
-    const data = [
-        { subject: '정확도', latest: 120, now: 110 },
-        { subject: '고정횟수', latest: 98, now: 130 },
-        { subject: '풀이시간', latest: 86, now: 100 },
-        { subject: '회귀', latest: 99, now: 85 },
-        { subject: '도약', latest: 85, now: 90 },
-        { subject: '총시간', latest: 95, now: 70 },
-    ];
+
     return(
         <div className="total-hundred">
             <div className="total-title">핵심지표별 백분위수</div>

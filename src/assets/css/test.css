@@ -27,7 +27,7 @@
 }
 .test-days2{
      padding: 30px;
-     width: 1200px;
+     width: 1400px;
      height: auto;
      border-radius: 24px;
      border: 1px solid var(--stroke, rgba(126, 150, 255, 0.16));
@@ -258,4 +258,96 @@
 
 .test-date{
     width: 30%;
+}
+
+#bg1{
+    width: 9%;
+}
+#bg2{
+    width: 10%;
+}
+#bg3{
+    width: 8.7%;
+}
+#bg4{
+    width: 10.6%;
+}
+#bg5{
+    width: 10.6%;
+}
+#bg6{
+    width: 10.6%;
+}
+#bg7{
+    width: 14%;
+}
+#bg8{
+    width: 14%;
+}
+#bg9{
+    width: 12.5%;
+}
+
+
+#bg img{
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+}
+.modal-question1{
+    position: fixed;
+    top: 220px;
+    left: 485px;
+    padding: 10px;
+}
+.modal-question2{
+    position: fixed;
+    top: 220px;
+    left: 618px;
+    padding: 10px;
+}
+.modal-question3{
+    position: fixed;
+    top: 220px;
+    left: 766px;
+    padding: 10px;
+}
+.modal-question4{
+    position: fixed;
+    top: 220px;
+    left: 884px;
+    padding: 10px;
+}
+.modal-question5{
+    position: fixed;
+    top: 220px;
+    left: 1075px;
+    padding: 10px;
+}
+.modal-question6{
+    position: fixed;
+    top: 220px;
+    left: 1279px;
+    padding: 10px;
+}
+.modal-triangle{
+    margin: 0 auto;
+    opacity: 0.8;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid #333333;
+    overflow: hidden;
+}
+.modal-main{
+    background-color: #333333;
+    opacity: 0.8;
+    color: #fff;
+    margin: 0px;
+    padding: 7px 10px;
+    border-radius: 10px;
+}
+.modal-main p{
+    margin: 5px;
 }

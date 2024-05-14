@@ -84,7 +84,7 @@ const ContentPage = () => {
             <div class="test-main">
                 <div className="mypage-mypage">콘텐츠 결과 > 목록</div>
                 <div class="test-days">
-                    {/*오빠가 해야할 일은 여기서 날짜 선택 범위(기간이니까 뒤에 선택 한 게 더 빠르면 안 됨)랑 날짜 선택시 value 변경*/}
+
                     <div class="test-options">
                         <div>
                             <input type="date" id="test-date" max="2024-12-31" min="2000-01-01" value={startDate}
@@ -98,18 +98,17 @@ const ContentPage = () => {
 
                             <select name="drop1" id="contents-select">
                                 <option value="All" >전체</option>
-                                <option value="Content1" >콘텐츠 1</option>
-                                <option value="Content2" >콘텐츠 2</option>
-                                <option value="Content3" >콘텐츠 3</option>
-                                <option value="Content4" >콘텐츠 4</option>
-                                <option value="Content5" >콘텐츠 5</option>
-                                <option value="Content6" >콘텐츠 6</option>
+                                <option value="글자 기억하기" >글자 기억하기</option>
+                                <option value="과일색 맞추기" >과일색 맞추기</option>
+                                <option value="토끼를 찾아라" >토끼를 찾아라</option>
+                                <option value="동물 찾기" >동물 찾기</option>
+                                <option value="돌고래를 잡아라" >돌고래를 잡아라</option>
+                                <option value="관찰 카메라" >관찰 카메라</option>
                             </select>
                             <button className="test-search-button" onClick={selectBetweenData}></button>
                         </div>
                     </div>
 
-                    {/*오빠가 해야할 일은 여기서 데이터 개수만큼 차트 만들기. (반복문으로 해야것지...?)*/}
                     <table className="test-table">
                         <colgroup>
                             <col/>
@@ -121,7 +120,7 @@ const ContentPage = () => {
                         <tr id="bg">
                             <th class="test-date">날짜</th>
                             <th class="test-user">유저</th>
-                            <th class="test-content">컨텐츠 이름</th>
+                            <th class="test-content">콘텐츠 이름</th>
                             <th class="test-score">점수</th>
                         </tr>
                         </thead>

@@ -103,7 +103,7 @@ const UserOnlineList = ({setShowButton, setSelectedUser, client}) => {
 
     return (
             <div className="test-main">
-                <div className="mypage-mypage">실시간 모니터링 > 목록</div>
+                <div className="mypage-mypage">실시간 모니터링 > 검사중인 회원 목록 확인</div>
                 <div className="monitoring-list">
                     {data.map((row, rowIndex) => (
                         <div key={rowIndex} className="monitoring-row">

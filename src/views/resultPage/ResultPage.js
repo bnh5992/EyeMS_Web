@@ -15,65 +15,17 @@ const ResultPage = () => {
         {name: '과일색 맞추기', latest: 0, now: 0},
         {name: '토끼를 찾아라', latest: 0, now: 0},
         {name: '동물 찾기', latest: 0, now: 0},
-        {name: '돌고래를 찾아라', latest: 0, now: 0},
+        {name: '돌고래를 잡아라', latest: 0, now: 0},
         {name: '관찰 카메라', latest: 0, now: 0},
     ];
 
     const polarData = [
-        {subject: '정확도', latest: 0, now: 0},
-        {subject: '고정횟수', latest: 0, now: 0},
-        {subject: '풀이시간', latest: 0, now: 0},
-        {subject: '회귀', latest: 0, now: 0},
-        {subject: '도약', latest: 0, now: 0},
-        {subject: '총시간', latest: 0, now: 0},
-    ];
-
-    const summaryTestData = [
-        {
-            date: '2024-03-28',
-            accurate: '34점',
-            fixCount: '67%',
-            questionTime: '67%',
-            regression: '67%',
-            saccade: '67%',
-            totalReadTime: '67%'
-        },
-        {
-            date: '2024-03-28',
-            accurate: '34점',
-            fixCount: '67%',
-            questionTime: '67%',
-            regression: '67%',
-            saccade: '67%',
-            totalReadTime: '67%'
-        },
-        {
-            date: '2024-03-28',
-            accurate: '34점',
-            fixCount: '67%',
-            questionTime: '67%',
-            regression: '67%',
-            saccade: '67%',
-            totalReadTime: '67%'
-        },
-        {
-            date: '2024-03-28',
-            accurate: '34점',
-            fixCount: '67%',
-            questionTime: '67%',
-            regression: '67%',
-            saccade: '67%',
-            totalReadTime: '67%'
-        },
-        {
-            date: '2024-03-28',
-            accurate: '34점',
-            fixCount: '67%',
-            questionTime: '67%',
-            regression: '67%',
-            saccade: '67%',
-            totalReadTime: '67%'
-        }
+        {subject: '정답률', latest: 0, now: 0},
+        {subject: '고정 비율', latest: 0, now: 0},
+        {subject: '풀이 비율', latest: 0, now: 0},
+        {subject: '회귀 비율', latest: 0, now: 0},
+        {subject: '도약 비율', latest: 0, now: 0},
+        {subject: '읽은 비율', latest: 0, now: 0},
     ];
 
 
@@ -84,19 +36,19 @@ const ResultPage = () => {
     const [testData, setTestData] = useState([{}])
     const [contentCountData, setContentCountData] = useState([{}])
     const [contentChartData, setContentChartData] = useState([
-        {name: 'content1', latest: 0, now: 0},
-        {name: 'content2', latest: 0, now: 0},
-        {name: 'content3', latest: 0, now: 0},
-        {name: 'content4', latest: 0, now: 0},
-        {name: 'content5', latest: 0, now: 0},
-        {name: 'content6', latest: 0, now: 0},])
+        {name: '글자 기억하기', latest: 0, now: 0},
+        {name: '과일색 맞추기', latest: 0, now: 0},
+        {name: '토끼를 찾아라', latest: 0, now: 0},
+        {name: '동물 찾기', latest: 0, now: 0},
+        {name: '돌고래를 잡아라', latest: 0, now: 0},
+        {name: '관찰 카메라', latest: 0, now: 0},])
     const [testChartData, setTestChartData] = useState([
-        {subject: '정확도', latest: 0, now: 0},
-        {subject: '고정횟수', latest: 0, now: 0},
-        {subject: '풀이시간', latest: 0, now: 0},
-        {subject: '회귀', latest: 0, now: 0},
-        {subject: '도약', latest: 0, now: 0},
-        {subject: '총시간', latest: 0, now: 0},])
+        {subject: '정답률', latest: 0, now: 0},
+        {subject: '고정 비율', latest: 0, now: 0},
+        {subject: '풀이 시간 비율', latest: 0, now: 0},
+        {subject: '회귀 비율', latest: 0, now: 0},
+        {subject: '도약 비율', latest: 0, now: 0},
+        {subject: '읽은 시간 비율', latest: 0, now: 0},])
     const [selectUser, setSelectUser] = useState("")
 
     const summary = async (name) => {
