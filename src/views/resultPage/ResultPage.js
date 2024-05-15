@@ -50,6 +50,7 @@ const ResultPage = () => {
         {subject: '도약 비율', latest: 0, now: 0},
         {subject: '읽은 시간 비율', latest: 0, now: 0},])
     const [selectUser, setSelectUser] = useState("")
+    const [userHaving, setUserHaving] = useState(true)
 
     const summary = async (name) => {
         if (name != null) {
@@ -210,12 +211,15 @@ const ResultPage = () => {
         const data = await getUserListData()
         console.log(data["userList"].length)
         if (data["userList"].length !== 0) {
+            setUserHaving(false)
+
             const modifiedUsers = data["userList"].map(user => ({name: user, online: false}));
             user.current = modifiedUsers
             const socket = await getSocket()
         }
         console.log(user.current)
         if (user.current[0].name !== undefined) {
+            setSelectUser(user.current[0].name)
             const summaryData = await getSummaryData(user.current[0].name)
             setContentData(summaryData)
             const countData = await getContentCountData(user.current[0].name)
@@ -240,6 +244,7 @@ const ResultPage = () => {
 
     const runTask = async () => {
         if (user.current[0].name !== undefined) {
+
             const summaryData = await getSummaryData(selectUser)
             setContentData(summaryData)
             const countData = await getContentCountData(selectUser)
@@ -328,7 +333,8 @@ const ResultPage = () => {
             {/* main */}
             <div className="total-main">
                 <div className="total-top-bar">
-                    <div className="mypage-mypage">{selectUser}님의 종합 결과</div>
+                    {!userHaving && <div className="mypage-mypage">{selectUser}님의 종합 결과</div>}
+                    {userHaving && <div className="mypage-mypage">유저가 없습니다</div>}
                     <UserCheck user={user} updateUser={updateUser} setSelectUser={setSelectUser}/>
                 </div>
                 <div className="total-top">

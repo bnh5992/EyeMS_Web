@@ -1,4 +1,4 @@
-import {PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart} from "recharts";
+import {Legend, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart} from "recharts";
 
 
 const TestSummaryChart = ({testChartData}) => {
@@ -11,8 +11,9 @@ const TestSummaryChart = ({testChartData}) => {
                 <PolarGrid />
                 <PolarAngleAxis dataKey="subject" />
                 <PolarRadiusAxis angle={0} domain={[0, 150]} />
-                <Radar name="Mike" dataKey="latest" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} dot={{ stroke: '#8884d8', fill: '#8884d8', r: 3 }}/>
-                <Radar name="Lily" dataKey="now" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
+                <Legend />
+                <Radar name="latest" dataKey="latest" stroke="#8884d8" fill="#8884d8" fillOpacity={0.4} dot={{ stroke: '#8884d8', fill: '#8884d8', r: 3 }}/>
+                <Radar name="now" dataKey="now" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} dot={{ stroke: '#82ca9d', fill: '#82ca9d', r: 3 }} />
                 {/*<Legend />*/}
             </RadarChart>
         </div>

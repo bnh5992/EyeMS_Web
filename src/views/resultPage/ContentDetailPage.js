@@ -8,11 +8,18 @@ const ContentPage = () => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const[contentData, setContentData] = useState([{}])
-    const[contentName, setContentName] = useState('')
+    const[contentName, setContentName] = useState('All')
     useEffect(() => {
+        const selectBox = document.querySelector('#contents-select');
+
+        selectBox.addEventListener('change', () => {
+            const value = selectBox.options[selectBox.selectedIndex].value;
+            setContentName(value)
+        });
         userContentAllInfo()
-        setContentName('글자기억하기')
     }, []);
+
+
 
     const userContentAllInfo = async () => {
         const token = localStorage.getItem('token')
@@ -42,12 +49,6 @@ const ContentPage = () => {
 
     const selectBetweenData = async () => {
         const agencyId = localStorage.getItem("agencyId")
-        const selectBox = document.querySelector('#contents-select');
-
-        selectBox.addEventListener('change', () => {
-            const value = selectBox.options[selectBox.selectedIndex].value;
-            setContentName(value)
-        });
         console.log(contentName)
         if(contentName === 'All'){
             userContentAllInfo()
