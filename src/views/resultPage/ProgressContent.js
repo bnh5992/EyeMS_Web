@@ -6,8 +6,8 @@ const ProgressContent = ({contentCountData}) => {
         { title: "과일색 맞추기", count: "0회" },
         { title: "토끼를 찾아라", count: "0회" },
         { title: "동물 찾기", count: "0회" },
-        { title: "돌고래를 잡아라", count: "0회" },
-        { title: "관찰 카메라", count: "0회" },
+        { title: "물고기 사냥", count: "0회" },
+        { title: "돌고래의 모험", count: "0회" },
     ]);
     useEffect(() => {
         if(contentCountData.content1 !== undefined){
@@ -16,8 +16,8 @@ const ProgressContent = ({contentCountData}) => {
                 { title: "과일색 맞추기", count: contentCountData.content2+"회" },
                 { title: "토끼를 찾아라", count: contentCountData.content3+"회" },
                 { title: "동물 찾기", count: contentCountData.content4+"회" },
-                { title: "돌고래를 잡아라", count: contentCountData.content5+"회" },
-                { title: "관찰 카메라", count: contentCountData.content6+"회" },
+                { title: "물고기 사냥", count: contentCountData.content5+"회" },
+                { title: "돌고래의 모험", count: contentCountData.content6+"회" },
             ])
         }
 

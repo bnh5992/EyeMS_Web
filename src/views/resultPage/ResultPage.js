@@ -15,8 +15,8 @@ const ResultPage = () => {
         {name: '과일색 맞추기', latest: 0, now: 0},
         {name: '토끼를 찾아라', latest: 0, now: 0},
         {name: '동물 찾기', latest: 0, now: 0},
-        {name: '돌고래를 잡아라', latest: 0, now: 0},
-        {name: '관찰 카메라', latest: 0, now: 0},
+        {name: '물고기 사냥', latest: 0, now: 0},
+        {name: '돌고래의 모험', latest: 0, now: 0},
     ];
 
     const polarData = [
@@ -40,8 +40,8 @@ const ResultPage = () => {
         {name: '과일색 맞추기', latest: 0, now: 0},
         {name: '토끼를 찾아라', latest: 0, now: 0},
         {name: '동물 찾기', latest: 0, now: 0},
-        {name: '돌고래를 잡아라', latest: 0, now: 0},
-        {name: '관찰 카메라', latest: 0, now: 0},])
+        {name: '물고기 사냥', latest: 0, now: 0},
+        {name: '돌고래의 모험', latest: 0, now: 0},])
     const [testChartData, setTestChartData] = useState([
         {subject: '정답률', latest: 0, now: 0},
         {subject: '고정 비율', latest: 0, now: 0},

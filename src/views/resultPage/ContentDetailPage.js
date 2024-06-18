@@ -103,8 +103,8 @@ const ContentPage = () => {
                                 <option value="과일색맞추기" >과일색 맞추기</option>
                                 <option value="토끼를찾아라" >토끼를 찾아라</option>
                                 <option value="동물찾기" >동물 찾기</option>
-                                <option value="돌고래를잡아라" >돌고래를 잡아라</option>
-                                <option value="관찰카메라" >관찰 카메라</option>
+                                <option value="물고기사냥" >물고기 사냥</option>
+                                <option value="돌고래의모험" >돌고래의 모험</option>
                             </select>
                             <button className="test-search-button" onClick={selectBetweenData}></button>
                         </div>
